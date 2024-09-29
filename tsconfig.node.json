@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023", "ES2022"],
-    "module": "CommonJS",
+    "module": "ES6",
     "skipLibCheck": true,
     "esModuleInterop": true,
 
@@ -12,7 +12,6 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
