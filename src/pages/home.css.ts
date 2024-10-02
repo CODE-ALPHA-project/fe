@@ -1,9 +1,12 @@
 import { style, globalStyle, keyframes } from "@vanilla-extract/css";
 
-globalStyle("body", {
+globalStyle("html, body", {
   margin: 0,
   padding: 0,
+  width: "100%",
+  height: "100%",
   boxSizing: "border-box",
+  overflowX: "hidden",
 });
 
 export const fadeIn = keyframes({
@@ -21,16 +24,16 @@ export const container = style({
   padding: "0",
   margin: "0",
   minHeight: "100vh",
+  width: "100%",
   display: "flex",
   flexDirection: "column",
+  overflowX: "hidden",
 
   "@media": {
     "screen and (max-width: 768px)": {
-      padding: "0 10px",
       flexDirection: "column",
     },
     "screen and (max-width: 480px)": {
-      padding: "0 5px",
       fontSize: "14px",
     },
   },
@@ -164,7 +167,8 @@ export const footer = style({
   textAlign: "center",
   position: "relative",
   overflow: "hidden",
-  width: "100vw",
+  width: "100%",
+  boxSizing: "border-box",
   margin: "0",
   "::before": {
     content: '""',
@@ -177,11 +181,6 @@ export const footer = style({
       "linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
     animation: `${shimmer} 3s infinite linear`,
     zIndex: 1,
-  },
-  "@media": {
-    "screen and (max-width: 768px)": {
-      width: "100vw",
-    },
   },
 });
 
