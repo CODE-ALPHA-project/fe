@@ -6,17 +6,12 @@ globalStyle("html, body", {
   width: "100%",
   height: "100%",
   boxSizing: "border-box",
-  overflowX: "hidden",
+  // overflowX: "hidden",
 });
 
 export const fadeIn = keyframes({
   "0%": { opacity: 0, transform: "translateY(-20px)" },
   "100%": { opacity: 1, transform: "translateY(0)" },
-});
-
-const shimmer = keyframes({
-  "0%": { backgroundPosition: "-1000px 0" },
-  "100%": { backgroundPosition: "1000px 0" },
 });
 
 export const container = style({
@@ -27,7 +22,7 @@ export const container = style({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  overflowX: "hidden",
+  // overflowX: "hidden",
 
   "@media": {
     "screen and (max-width: 768px)": {
@@ -41,13 +36,13 @@ export const container = style({
 
 export const main = style({
   flex: 1,
-  padding: "40px 20px",
+  // padding: "40px 20px",
   maxWidth: "1200px",
   margin: "0 auto",
   width: "100%",
   "@media": {
     "screen and (max-width: 768px)": {
-      padding: "20px 10px",
+      // padding: "20px 10px",
     },
   },
 });
@@ -170,18 +165,6 @@ export const footer = style({
   width: "100%",
   boxSizing: "border-box",
   margin: "0",
-  "::before": {
-    content: '""',
-    position: "absolute",
-    top: "-50%",
-    left: "-50%",
-    right: "-50%",
-    bottom: "-50%",
-    background:
-      "linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
-    animation: `${shimmer} 3s infinite linear`,
-    zIndex: 1,
-  },
 });
 
 export const footerContent = style({
