@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+// component : MainPage에서 슬라이드를 관리하는 컴포넌트 //
+import React from "react";
 import {
   sliderContainer,
   slider,
@@ -6,6 +7,7 @@ import {
   prevButton,
   nextButton,
 } from "./slider.css";
+import { useSlide } from "../hooks/useSlide";
 
 interface SlideProps {
   image: string;
@@ -17,44 +19,11 @@ interface ImageSliderProps {
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const totalSlides = slides.length;
-
-  // 실제 표시할 슬라이드 배열 (앞뒤로 복제본 추가)
   const extendedSlides = [slides[totalSlides - 1], ...slides, slides[0]];
 
-  const moveToSlide = useCallback((index: number) => {
-    setIsTransitioning(true);
-    setCurrentSlide(index);
-  }, []);
-
-  const nextSlide = useCallback(() => {
-    moveToSlide(currentSlide + 1);
-  }, [currentSlide, moveToSlide]);
-
-  const prevSlide = useCallback(() => {
-    moveToSlide(currentSlide - 1);
-  }, [currentSlide, moveToSlide]);
-
-  useEffect(() => {
-    if (isTransitioning) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        if (currentSlide === 0) {
-          setCurrentSlide(totalSlides);
-        } else if (currentSlide === totalSlides + 1) {
-          setCurrentSlide(1);
-        }
-      }, 500); // 트랜지션 시간과 일치시킴
-      return () => clearTimeout(timer);
-    }
-  }, [currentSlide, isTransitioning, totalSlides]);
-
-  useEffect(() => {
-    const intervalId = setInterval(nextSlide, 5000);
-    return () => clearInterval(intervalId);
-  }, [nextSlide]);
+  const { currentSlide, isTransitioning, nextSlide, prevSlide } =
+    useSlide(totalSlides);
 
   return (
     <div className={sliderContainer}>
