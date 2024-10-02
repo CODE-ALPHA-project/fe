@@ -164,6 +164,8 @@ export const footer = style({
   textAlign: "center",
   position: "relative",
   overflow: "hidden",
+  width: "100vw",
+  margin: "0",
   "::before": {
     content: '""',
     position: "absolute",
@@ -175,6 +177,11 @@ export const footer = style({
       "linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
     animation: `${shimmer} 3s infinite linear`,
     zIndex: 1,
+  },
+  "@media": {
+    "screen and (max-width: 768px)": {
+      width: "100vw",
+    },
   },
 });
 

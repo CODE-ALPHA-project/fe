@@ -1,3 +1,4 @@
+// page : MainPage //
 import React from "react";
 import ImageSlider from "./ImageSlider";
 import {
@@ -16,8 +17,8 @@ import {
   featureTitle,
   featureDescription,
 } from "./home.css";
-import { Header } from "../stories/Header";
 import { slides } from "../utils/Slide";
+import { Header } from "../stories/Header";
 
 const Home = () => {
   return (
