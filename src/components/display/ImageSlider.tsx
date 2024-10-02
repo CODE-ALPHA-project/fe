@@ -7,7 +7,7 @@ import {
   prevButton,
   nextButton,
 } from "./slider.css";
-import { useSlide } from "../hooks/useSlide";
+import { useSlide } from "../../hooks/useSlide";
 
 interface SlideProps {
   image: string;

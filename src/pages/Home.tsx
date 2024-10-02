@@ -1,6 +1,6 @@
 // page : MainPage //
 import React from "react";
-import ImageSlider from "./ImageSlider";
+import ImageSlider from "../components/display/ImageSlider";
 import {
   container,
   main,
