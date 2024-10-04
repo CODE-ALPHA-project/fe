@@ -39,7 +39,7 @@ export const useChat = ({ url, topic, onMessageReceived }: UseChatProps) => {
   }, [url, topic, onMessageReceived]);
 
   const sendMessage = useCallback(
-    (destination: string, message: any) => {
+    (destination: string, message: string) => {
       if (client?.connected) {
         client.publish({ destination, body: JSON.stringify(message) });
       }
