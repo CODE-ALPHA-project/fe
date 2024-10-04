@@ -15,13 +15,10 @@ import {
   featureDescription,
 } from "./home.css";
 import { slides } from "../utils/Slide";
-import Footer from "../components/display/Footer";
-import { Header } from "../components/display/Header";
 
 const Home = () => {
   return (
     <div className={container}>
-      <Header />
       <main className={main}>
         <section className={heroSection}>
           <h1 className={heroTitle}>외국인 노동자를 위한 법률 상담</h1>
@@ -55,7 +52,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
