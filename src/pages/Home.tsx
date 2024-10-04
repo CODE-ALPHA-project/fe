@@ -4,9 +4,6 @@ import ImageSlider from "../components/display/ImageSlider";
 import {
   container,
   main,
-  footer,
-  footerContent,
-  footerLink,
   button,
   heroSection,
   heroTitle,
@@ -18,7 +15,8 @@ import {
   featureDescription,
 } from "./home.css";
 import { slides } from "../utils/Slide";
-import { Header } from "../stories/Header";
+import Footer from "../components/display/Footer";
+import { Header } from "../components/display/Header";
 
 const Home = () => {
   return (
@@ -57,19 +55,7 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <footer className={footer}>
-        <div className={footerContent}>
-          <p>© 2024 법률 상담 서비스 | 연락처: 강태현 | 전화: 강태현</p>
-          <div>
-            <a href="/privacy" className={footerLink}>
-              개인정보 처리방침
-            </a>
-            <a href="/terms" className={footerLink}>
-              이용약관
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
