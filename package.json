@@ -14,6 +14,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
     "@tanstack/react-query": "^5.55.4",
     "@tanstack/react-query-devtools": "^5.55.4",
     "@types/react-responsive": "^8.0.8",
