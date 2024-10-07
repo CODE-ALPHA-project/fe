@@ -5,13 +5,13 @@ const mobileBreakpoint = "768px";
 export const sliderContainer = style({
   position: "relative",
   width: "100%",
-  paddingBottom: "75%", // 4:3 aspect ratio
+  paddingBottom: "75%",
   overflow: "hidden",
   borderRadius: "10px",
   cursor: "pointer",
   "@media": {
     [`screen and (min-width: ${mobileBreakpoint})`]: {
-      paddingBottom: "56.25%", // 16:9 aspect ratio for desktop
+      paddingBottom: "56.25%",
     },
   },
 });

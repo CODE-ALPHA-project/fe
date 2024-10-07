@@ -30,7 +30,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
       setIsButtonDisabled(true);
       const timer = setTimeout(() => {
         setIsButtonDisabled(false);
-      }, 500); // 트랜지션 시간과 일치시킵니다
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [isTransitioning]);
