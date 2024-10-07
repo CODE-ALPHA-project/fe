@@ -29,8 +29,8 @@ export const Header: React.FC = () => {
           service
         </div>
         <div className={styles.userActions}>
-          <span className={styles.userMenu}>로그인/가입</span>
-          <span className={styles.userMenu}>전문가 가입안내</span>
+          {/* <span className={styles.userMenu}>로그인/가입</span>
+          <span className={styles.userMenu}>전문가 가입안내</span> */}
         </div>
       </div>
       <form onSubmit={handleSearch} className={styles.searchForm}>
