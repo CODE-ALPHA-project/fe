@@ -1,17 +1,9 @@
-// component : MainPage에서 슬라이드를 관리하는 컴포넌트 //
-import React from "react";
-import {
-  sliderContainer,
-  slider,
-  slide,
-  prevButton,
-  nextButton,
-} from "./slider.css";
+import React, { useCallback, useState, useEffect } from "react";
+import * as styles from "./imageslider.css";
 import { useSlide } from "../../hooks/useSlide";
 
 interface SlideProps {
   image: string;
-  // caption: string;
 }
 
 interface ImageSliderProps {
@@ -24,11 +16,41 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
 
   const { currentSlide, isTransitioning, nextSlide, prevSlide } =
     useSlide(totalSlides);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const getSlideIndex = useCallback(() => {
+    let index = currentSlide % (totalSlides + 2);
+    if (index === 0) return totalSlides;
+    if (index === totalSlides + 1) return 1;
+    return index;
+  }, [currentSlide, totalSlides]);
+
+  useEffect(() => {
+    if (isTransitioning) {
+      setIsButtonDisabled(true);
+      const timer = setTimeout(() => {
+        setIsButtonDisabled(false);
+      }, 500); // 트랜지션 시간과 일치시킵니다
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  const handlePrevClick = useCallback(() => {
+    if (!isButtonDisabled) {
+      prevSlide();
+    }
+  }, [prevSlide, isButtonDisabled]);
+
+  const handleNextClick = useCallback(() => {
+    if (!isButtonDisabled) {
+      nextSlide();
+    }
+  }, [nextSlide, isButtonDisabled]);
 
   return (
-    <div className={sliderContainer}>
+    <div className={styles.sliderContainer}>
       <div
-        className={slider}
+        className={styles.slider}
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
           transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
@@ -37,19 +59,30 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
         {extendedSlides.map((slideItem, index) => (
           <div
             key={index}
-            className={slide}
+            className={styles.slide}
             style={{ backgroundImage: `url(${slideItem.image})` }}
-          >
-            {/* <div className={slideCaption}>{slideItem.caption}</div> */}
-          </div>
+          />
         ))}
       </div>
-      <button className={prevButton} onClick={prevSlide}>
-        &lt;
-      </button>
-      <button className={nextButton} onClick={nextSlide}>
-        &gt;
-      </button>
+      <div className={styles.sliderControls}>
+        <button
+          className={styles.prevButton}
+          onClick={handlePrevClick}
+          disabled={isButtonDisabled}
+        >
+          &lt;
+        </button>
+        <span className={styles.slideCounter}>
+          {`${getSlideIndex()} / ${totalSlides}`}
+        </span>
+        <button
+          className={styles.nextButton}
+          onClick={handleNextClick}
+          disabled={isButtonDisabled}
+        >
+          &gt;
+        </button>
+      </div>
     </div>
   );
 };

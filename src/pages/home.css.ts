@@ -17,6 +17,7 @@ export const fadeIn = keyframes({
 export const container = style({
   fontFamily: "'Noto Sans KR', Arial, sans-serif",
   padding: "0",
+  borderTop: "none",
   margin: "0",
   minHeight: "100vh",
   width: "100%",
@@ -47,110 +48,15 @@ export const main = style({
   },
 });
 
-export const heroSection = style({
-  textAlign: "center",
-  marginBottom: "40px",
-});
-
-export const heroTitle = style({
-  fontSize: "2.5rem",
+export const sectionTitle = style({
+  fontSize: "24px",
+  fontWeight: "bold",
   marginBottom: "20px",
-  color: "#2c3e50",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      fontSize: "2rem",
-    },
-  },
 });
 
-export const heroDescription = style({
-  fontSize: "1.2rem",
-  color: "#34495e",
-  marginBottom: "30px",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      fontSize: "1rem",
-    },
-  },
-});
-
-export const button = style({
-  padding: "12px 24px",
-  backgroundColor: "#2ecc71",
-  color: "white",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer",
-  fontSize: "1.1rem",
-  transition: "background-color 0.3s ease",
-  ":hover": {
-    backgroundColor: "#27ae60",
-  },
-  "@media": {
-    "screen and (max-width: 768px)": {
-      padding: "10px 20px",
-      fontSize: "1rem",
-    },
-  },
-});
-
-export const featuresSection = style({
+export const expertsSection = style({
+  padding: "10px",
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-  gap: "30px",
-  marginTop: "50px",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      gridTemplateColumns: "1fr",
-      gap: "20px",
-    },
-  },
-});
-
-export const featureCard = style({
-  backgroundColor: "#f9f9f9",
-  padding: "30px",
-  borderRadius: "10px",
-  textAlign: "center",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-  transition: "transform 0.3s ease",
-  ":hover": {
-    transform: "translateY(-5px)",
-  },
-  "@media": {
-    "screen and (max-width: 768px)": {
-      padding: "20px",
-    },
-  },
-});
-
-export const featureIcon = style({
-  fontSize: "3rem",
-  marginBottom: "20px",
-  color: "#3498db",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      fontSize: "2.5rem",
-    },
-  },
-});
-
-export const featureTitle = style({
-  fontSize: "1.5rem",
-  marginBottom: "10px",
-  color: "#2c3e50",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      fontSize: "1.3rem",
-    },
-  },
-});
-
-export const featureDescription = style({
-  color: "#34495e",
-  "@media": {
-    "screen and (max-width: 768px)": {
-      fontSize: "0.9rem",
-    },
-  },
+  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+  gap: "20px",
 });
