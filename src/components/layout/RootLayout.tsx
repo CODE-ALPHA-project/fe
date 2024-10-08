@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../display/Header";
 import Footer from "../display/Footer";
-import { defaultLayout } from "./layout.css";
+import { defaultLayout } from "./Layout.css.ts";
 
 const RootLayout = () => {
   return (

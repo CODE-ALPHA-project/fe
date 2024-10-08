@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
-import * as styles from "./imageslider.css";
+import * as styles from "./Imageslider.css.ts";
 import { useSlide } from "../../hooks/useSlide";
 
 interface SlideProps {
@@ -19,7 +19,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const getSlideIndex = useCallback(() => {
-    let index = currentSlide % (totalSlides + 2);
+    const index = currentSlide % (totalSlides + 2);
     if (index === 0) return totalSlides;
     if (index === totalSlides + 1) return 1;
     return index;

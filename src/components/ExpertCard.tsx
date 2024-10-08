@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./expertcard.css";
+import * as styles from "./ExpertCard.css.ts";
 
 interface ExpertProps {
   name: string;

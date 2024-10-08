@@ -1,6 +1,6 @@
 import React from "react";
 import InputBox from "../components/InputBox";
-import { pageContainer, chatArea, inputArea } from "./chatting.css";
+import { pageContainer, chatArea, inputArea } from "./Chatting.css.ts";
 
 // Component
 const ChattingPage = () => {
