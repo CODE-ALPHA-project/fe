@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./banner.css";
+import * as styles from "./Banner.css.ts";
 import ImageSlider from "./ImageSlider";
 import { slides } from "../../mock/Slide";
 
