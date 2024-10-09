@@ -1,6 +1,6 @@
 // page : MainPage //
 import React from "react";
-import * as styles from "./Home.css.ts";
+import * as styles from "./home.css";
 import { Banner } from "../components/display/Banner";
 import { experts } from "../mock/expert";
 import { ExpertCard } from "../components/ExpertCard";

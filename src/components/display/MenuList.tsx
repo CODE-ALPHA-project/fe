@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./MenuList.css.ts";
+import * as styles from "./MenuList.css";
 import MenuCard from "./MenuCard.tsx";
 import { useNavigate } from "react-router-dom";
 
