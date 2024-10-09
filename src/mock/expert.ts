@@ -1,4 +1,4 @@
-import image from "../assets/image.webp";
+import image from "../assets/ping.webp";
 import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 export const experts = [
