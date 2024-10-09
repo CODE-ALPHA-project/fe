@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./MenuCard.css.ts";
+import * as styles from "./MenuCard.css";
 
 interface InfoCardProps {
   iconSrc: string;

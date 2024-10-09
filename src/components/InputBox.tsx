@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { chatInputContainer, chatInput, sendButton } from "./InputBox.css.ts";
+import { chatInputContainer, chatInput, sendButton } from "./InputBox.css";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
