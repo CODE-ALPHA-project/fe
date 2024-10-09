@@ -38,7 +38,7 @@ export const container = style({
 export const main = style({
   flex: 1,
   // padding: "40px 20px",
-  maxWidth: "1200px",
+  // maxWidth: "1200px",
   margin: "0 auto",
   width: "100%",
   "@media": {

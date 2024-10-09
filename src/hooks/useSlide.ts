@@ -1,22 +1,21 @@
-// hook : Slide 관리 Custom hook //
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export const useSlide = (totalSlides: number, intervalTime: number = 5000) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const moveToSlide = useCallback((index: number) => {
+  const moveToSlide = (index: number) => {
     setIsTransitioning(true);
     setCurrentSlide(index);
-  }, []);
+  };
 
-  const nextSlide = useCallback(() => {
+  const nextSlide = () => {
     moveToSlide(currentSlide + 1);
-  }, [currentSlide, moveToSlide]);
+  };
 
-  const prevSlide = useCallback(() => {
+  const prevSlide = () => {
     moveToSlide(currentSlide - 1);
-  }, [currentSlide, moveToSlide]);
+  };
 
   useEffect(() => {
     if (isTransitioning) {
@@ -35,7 +34,7 @@ export const useSlide = (totalSlides: number, intervalTime: number = 5000) => {
   useEffect(() => {
     const intervalId = setInterval(nextSlide, intervalTime);
     return () => clearInterval(intervalId);
-  }, [nextSlide, intervalTime]);
+  }, [intervalTime]);
 
   return {
     currentSlide,

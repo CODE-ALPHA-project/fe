@@ -5,6 +5,7 @@ import { Banner } from "../components/display/Banner";
 import { experts } from "../mock/expert";
 import { ExpertCard } from "../components/ExpertCard";
 import QnASection from "../components/display/QnASection";
+import MenuList from "../components/display/MenuList.tsx";
 
 const getRandomExperts = (count: number) => {
   const shuffled = [...experts].sort(() => 0.5 - Math.random());
@@ -25,6 +26,7 @@ const Home = () => {
           ))}
         </section>
         <QnASection />
+        <MenuList />
       </main>
     </div>
   );

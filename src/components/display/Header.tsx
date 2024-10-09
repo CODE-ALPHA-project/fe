@@ -3,17 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import * as styles from "./Header.css.ts";
 import { Sidebar } from "./Sidebar";
+import { SearchBar } from "./SearchBar.tsx";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isDesktop = useMediaQuery({ minWidth: 768 });
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    //TODO : 검색처리
-  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -28,23 +23,9 @@ export const Header: React.FC = () => {
         <div className={styles.logo} onClick={() => navigate("/")}>
           service
         </div>
-        <div className={styles.userActions}>
-          {/* <span className={styles.userMenu}>로그인/가입</span>
-          <span className={styles.userMenu}>전문가 가입안내</span> */}
-        </div>
+        <div className={styles.userActions}></div>
       </div>
-      <form onSubmit={handleSearch} className={styles.searchForm}>
-        <input
-          type="text"
-          placeholder="업무/전문가/질문답변 검색"
-          className={styles.searchInput}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button type="submit" className={styles.searchButton}>
-          🔍
-        </button>
-      </form>
+      <SearchBar placeholder="전문가/질문답변 검색" />
     </header>
   );
 
@@ -54,18 +35,7 @@ export const Header: React.FC = () => {
         <div className={styles.logo} onClick={() => navigate("/")}>
           service
         </div>
-        <form onSubmit={handleSearch} className={styles.desktopSearchForm}>
-          <input
-            type="text"
-            placeholder="업무/전문가/질문답변 검색"
-            className={styles.desktopSearchInput}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button type="submit" className={styles.desktopSearchButton}>
-            🔍
-          </button>
-        </form>
+        <SearchBar placeholder="업무/전문가/질문답변 검색" />
         <div className={styles.desktopUserActions}>
           <span className={styles.userMenu}>로그인</span>
           <span className={styles.userMenu}>전문가 가입안내</span>

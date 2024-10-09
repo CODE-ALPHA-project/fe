@@ -1,10 +1,10 @@
-import docs from "../stories/assets/docs.png";
-import img1 from "../assets/img1.png";
-import img2 from "../assets/img2.png";
+import image from "../assets/image.webp";
+import img1 from "../assets/img1.webp";
+import img2 from "../assets/img2.webp";
 export const experts = [
   {
     name: "우성현",
-    image: docs,
+    image: image,
     tags: ["임금체불"],
     company: "대구광역시 북구",
     description: "떼인돈 받아드립니다",
@@ -36,7 +36,7 @@ export const experts = [
   },
   {
     name: "곽두식",
-    image: docs,
+    image: image,
     tags: ["노동법"],
     company: "경북대학교",
     description: "노동법 해결사",

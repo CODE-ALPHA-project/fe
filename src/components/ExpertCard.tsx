@@ -1,5 +1,6 @@
 import React from "react";
 import * as styles from "./ExpertCard.css.ts";
+import { getWebPPath } from "../utils/getWebp.ts";
 
 interface ExpertProps {
   name: string;
@@ -20,7 +21,13 @@ export const ExpertCard: React.FC<ExpertProps> = ({
 }) => {
   return (
     <div className={styles.expertCard}>
-      <img src={image} alt={name} className={styles.expertImage} />
+      <div className={styles.expertImageContainer}>
+        <picture>
+          <source srcSet={getWebPPath(image)} type="image/webp" />
+          <source srcSet={image} type="image/png" />
+          <img src={image} alt={name} className={styles.expertImage} />
+        </picture>
+      </div>
       <div className={styles.expertInfo}>
         <div className={styles.expertTags}>
           {tags.map((tag, i) => (

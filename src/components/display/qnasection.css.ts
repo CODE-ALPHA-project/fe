@@ -1,10 +1,18 @@
 import { style } from "@vanilla-extract/css";
 
 export const qnaSection = style({
-  margin: "40px 0",
+  position: "relative",
+  width: "100%",
   backgroundColor: "lightgray",
-  padding: "15px",
-  border: "none",
+  padding: "40px 0",
+  display: "flex",
+  justifyContent: "center",
+});
+
+export const qnaSectionContent = style({
+  width: "100%",
+  padding: "0 20px",
+  boxSizing: "border-box",
 });
 
 export const sectionTitle = style({
@@ -45,14 +53,19 @@ export const askButton = style({
 
 export const qnaList = style({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gap: "20px",
+  width: "100%",
   "@media": {
+    "screen and (max-width: 1024px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
     "screen and (max-width: 767px)": {
       gridTemplateColumns: "1fr",
     },
   },
 });
+
 export const qnaItem = style({
   border: "1px solid #e0e0e0",
   borderRadius: "8px",
