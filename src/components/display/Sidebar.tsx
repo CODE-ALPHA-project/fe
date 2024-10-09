@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "./Sidebar.css";
+import * as styles from "./sidebar.css";
 
 interface SidebarProps {
   isOpen: boolean;
