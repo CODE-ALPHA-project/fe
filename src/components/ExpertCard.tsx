@@ -1,6 +1,6 @@
 import React from "react";
-import * as styles from "./ExpertCard.css.ts";
-import { getWebPPath } from "../utils/getWebp.ts";
+import * as styles from "./expertcard.css";
+import { getWebPPath } from "../utils/getWebp";
 
 interface ExpertProps {
   name: string;

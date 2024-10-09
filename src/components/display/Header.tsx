@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import * as styles from "./Header.css.ts";
+import * as styles from "./header.css";
 import { Sidebar } from "./Sidebar";
 import { SearchBar } from "./SearchBar.tsx";
 

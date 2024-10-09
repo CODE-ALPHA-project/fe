@@ -1,5 +1,5 @@
 import React from "react";
-import { footer, footerContent, footerLink } from "./Footer.css.ts";
+import { footer, footerContent, footerLink } from "./Footer.css";
 
 const Footer = () => {
   return (

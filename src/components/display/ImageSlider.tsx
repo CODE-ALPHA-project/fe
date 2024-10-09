@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
-import * as styles from "./Imageslider.css.ts";
+import * as styles from "./imageslider.css";
 import { useSlide } from "../../hooks/useSlide";
-import { getWebPPath } from "../../utils/getWebp.ts";
+import { getWebPPath } from "../../utils/getWebp";
 
 interface SlideProps {
   key: string;

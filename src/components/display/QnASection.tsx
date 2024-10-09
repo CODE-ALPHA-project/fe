@@ -1,6 +1,6 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import * as styles from "./QnAsection.css.ts";
+import * as styles from "./QnAsection.css";
 import { qnaItems } from "../../mock/qna";
 import { useNavigate } from "react-router-dom";
 
