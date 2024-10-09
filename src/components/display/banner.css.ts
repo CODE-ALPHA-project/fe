@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 const mobileBreakpoint = "768px";
+// const tabletBreackpoint = "992px";
 
 export const banner = style({
   display: "flex",

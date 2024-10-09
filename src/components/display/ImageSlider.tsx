@@ -1,8 +1,10 @@
 import React, { useCallback, useState, useEffect } from "react";
 import * as styles from "./Imageslider.css.ts";
 import { useSlide } from "../../hooks/useSlide";
+import { getWebPPath } from "../../utils/getWebp.ts";
 
 interface SlideProps {
+  key: string;
   image: string;
 }
 
@@ -12,7 +14,11 @@ interface ImageSliderProps {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
   const totalSlides = slides.length;
-  const extendedSlides = [slides[totalSlides - 1], ...slides, slides[0]];
+  const extendedSlides = [
+    { ...slides[totalSlides - 1], key: `prev-${slides[totalSlides - 1].key}` },
+    ...slides,
+    { ...slides[0], key: `next-${slides[0].key}` },
+  ];
 
   const { currentSlide, isTransitioning, nextSlide, prevSlide } =
     useSlide(totalSlides);
@@ -56,12 +62,18 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
           transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
         }}
       >
-        {extendedSlides.map((slideItem, index) => (
-          <div
-            key={index}
-            className={styles.slide}
-            style={{ backgroundImage: `url(${slideItem.image})` }}
-          />
+        {extendedSlides.map((slideItem) => (
+          <div key={slideItem.key} className={styles.slide}>
+            <picture>
+              <source srcSet={getWebPPath(slideItem.image)} type="image/webp" />
+              <source srcSet={slideItem.image} type="image/png" />
+              <img
+                src={slideItem.image}
+                alt={`Slide ${slideItem.key}`}
+                className={styles.slideImage}
+              />
+            </picture>
+          </div>
         ))}
       </div>
       <div className={styles.sliderControls}>

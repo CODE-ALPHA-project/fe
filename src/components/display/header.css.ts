@@ -38,42 +38,6 @@ export const logo = style({
   cursor: "pointer",
 });
 
-export const searchForm = style({
-  display: "none",
-  alignItems: "center",
-  "@media": {
-    [`screen and (min-width: ${mobileBreakpoint})`]: {
-      display: "flex",
-      flexGrow: 1,
-      maxWidth: "400px",
-      margin: "0 20px",
-    },
-  },
-});
-
-export const searchInput = style({
-  flexGrow: 1,
-  border: "1px solid #eee",
-  borderRadius: "20px",
-  padding: "5px 15px",
-  fontSize: "14px",
-  "::placeholder": {
-    color: "#888",
-  },
-  ":focus": {
-    outline: "none",
-    borderColor: "#007bff",
-  },
-});
-
-export const searchButton = style({
-  background: "none",
-  border: "none",
-  fontSize: "20px",
-  cursor: "pointer",
-  marginLeft: "10px",
-});
-
 export const userActions = style({
   display: "flex",
   gap: "1rem",

@@ -1,33 +1,48 @@
 import { style } from "@vanilla-extract/css";
 
+export const expertCardsContainer = style({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+  gap: "20px",
+  padding: "20px",
+  width: "100%",
+  maxWidth: "1200px",
+  margin: "0 auto",
+});
+
 export const expertCard = style({
   display: "flex",
+  marginBottom: "20px",
   flexDirection: "column",
   border: "1px solid #e0e0e0",
   borderRadius: "8px",
   overflow: "hidden",
   boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
   backgroundColor: "white",
-  maxWidth: "300px",
+  width: "100%",
   gap: "10px",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   cursor: "pointer",
   ":hover": {
-    transform: "scale(1.05) translateY(-5px)",
+    transform: "translateY(-5px)",
     boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
   },
 });
 
-export const expertImage = style({
-  width: "100%",
-  height: "200px",
-  objectFit: "cover",
-  borderRadius: "50%",
+export const expertImageContainer = style({
+  width: "150px",
+  height: "150px",
   margin: "20px auto",
+  borderRadius: "50%",
+  overflow: "hidden",
   border: "5px solid white",
   boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-  maxWidth: "150px",
-  maxHeight: "150px",
+});
+
+export const expertImage = style({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
 });
 
 export const expertInfo = style({

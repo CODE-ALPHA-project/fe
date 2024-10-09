@@ -1,4 +1,4 @@
-import image from "../assets/image.png";
+import image from "../assets/image.webp";
 interface QnAItem {
   category: string;
   title: string;

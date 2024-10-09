@@ -33,13 +33,19 @@ export const slide = style({
   backgroundPosition: "center",
 });
 
+export const slideImage = style({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+});
+
 export const sliderControls = style({
   position: "absolute",
   bottom: "10px",
   right: "10px",
   display: "flex",
   alignItems: "center",
-  background: "rgba(0, 0, 0, 0.5)",
+  background: "rgba(0, 0, 0, 0.2)",
   borderRadius: "15px",
   padding: "5px",
 });
