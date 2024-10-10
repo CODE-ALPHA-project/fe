@@ -1,5 +1,4 @@
 import docs from "../assets/ping.webp";
-import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import secret from "../assets/img3.webp";
 export const slides = [
