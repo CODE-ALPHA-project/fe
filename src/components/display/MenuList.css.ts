@@ -1,9 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 export const taxInfoSection = style({
-  background: "linear-gradient(to top, #1e293a, #3b4b66)",
+  background: "rgba(38 38 38)",
   color: "white",
   padding: "40px 20px",
+  // borderRadius: "10px",
   textAlign: "center",
 });
 
