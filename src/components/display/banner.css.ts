@@ -6,9 +6,9 @@ const mobileBreakpoint = "768px";
 export const banner = style({
   display: "flex",
   flexDirection: "column",
-  background: "linear-gradient(to top, #1e293b, #3b4b66)",
+  background: "linear-gradient(to top, #000000, #3b4b66)",
   color: "white",
-  borderRadius: "10px",
+  // borderRadius: "10px",
   margin: "0",
   padding: "20px",
   "@media": {

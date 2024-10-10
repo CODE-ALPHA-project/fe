@@ -3,7 +3,8 @@ import { style } from "@vanilla-extract/css";
 export const qnaSection = style({
   position: "relative",
   width: "100%",
-  backgroundColor: "lightgray",
+  backgroundColor: "#f0f0f0",
+  // borderRadius: "10px",
   padding: "40px 0",
   display: "flex",
   justifyContent: "center",

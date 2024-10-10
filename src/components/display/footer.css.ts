@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
 export const footer = style({
-  backgroundColor: "#34495e",
-  color: "#ecf0f1",
+  backgroundColor: "#f7f7f7",
+  color: "#444",
   padding: "30px 0",
   textAlign: "center",
   position: "relative",

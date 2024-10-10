@@ -47,7 +47,14 @@ export const main = style({
     },
   },
 });
-
+export const expertContainer = style({
+  margin: "0 50px",
+  "@media": {
+    "screen and (max-width: 768px)": {
+      margin: "0 30px",
+    },
+  },
+});
 export const sectionTitle = style({
   fontSize: "24px",
   fontWeight: "bold",

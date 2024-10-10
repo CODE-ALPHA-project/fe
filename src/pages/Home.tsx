@@ -19,12 +19,14 @@ const Home = () => {
     <div className={styles.container}>
       <Banner />
       <main className={styles.main}>
-        <h2 className={styles.sectionTitle}>⭐추천노무사⭐</h2>
-        <section className={styles.expertsSection}>
-          {randomExperts.map((expert, index) => (
-            <ExpertCard key={index} {...expert} />
-          ))}
-        </section>
+        <div className={styles.expertContainer}>
+          <h2 className={styles.sectionTitle}>⭐추천노무사⭐</h2>
+          <section className={styles.expertsSection}>
+            {randomExperts.map((expert, index) => (
+              <ExpertCard key={index} {...expert} />
+            ))}
+          </section>
+        </div>
         <QnASection />
         <MenuList />
       </main>
