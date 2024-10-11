@@ -1,6 +1,6 @@
 import React from "react";
 import * as styles from "./expertcard.css";
-import { getWebPPath } from "../utils/getWebp";
+import { getWebPPath } from "../../../utils/getWebp";
 
 interface ExpertProps {
   name: string;

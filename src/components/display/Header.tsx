@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import * as styles from "./header.css";
-import { Sidebar } from "./Sidebar";
-import { SearchBar } from "./SearchBar.tsx";
+import { Sidebar } from "../../pages/Home/components/Sidebar.tsx";
+import { SearchBar } from "../../pages/Home/components/SearchBar.tsx";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -46,6 +46,9 @@ export const Header: React.FC = () => {
         <span className={styles.navItem}>질문답변</span>
         <span className={styles.navItem}>포스트</span>
         <span className={styles.navItem}>비용안내</span>
+        <span className={styles.navItem} onClick={() => navigate("/chatting")}>
+          채팅하기
+        </span>
       </nav>
     </header>
   );

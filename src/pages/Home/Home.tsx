@@ -1,11 +1,11 @@
 // page : MainPage //
 import React from "react";
 import * as styles from "./home.css";
-import { Banner } from "../components/display/Banner";
-import { experts } from "../mock/expert";
-import { ExpertCard } from "../components/ExpertCard";
-import QnASection from "../components/display/QnASection";
-import MenuList from "../components/display/MenuList.tsx";
+import { Banner } from "./components/Banner.tsx";
+import { experts } from "../../mock/expert.ts";
+import { ExpertCard } from "./components/ExpertCard.tsx";
+import QnASection from "./components/QnASection.tsx";
+import MenuList from "./components/MenuList.tsx";
 
 const getRandomExperts = (count: number) => {
   const shuffled = [...experts].sort(() => 0.5 - Math.random());

@@ -65,6 +65,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             >
               전문가 가입안내
             </div>
+            <div
+              className={styles.sidebarNavItem}
+              onClick={() => handleNavigation("/chatting")}
+            >
+              챗봇
+            </div>
             {/* <div
               className={styles.sidebarNavItem}
               onClick={() => handleNavigation("/help-center")}
