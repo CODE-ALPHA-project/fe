@@ -1,6 +1,6 @@
 // component : 채팅 영역 //
 
-import React, { useState } from "react";
+import React from "react";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessage";
 import ChatInput from "./ChatInput";
@@ -30,13 +30,13 @@ interface ChatAreaProps {
 
 const ChatArea: React.FC<ChatAreaProps> = ({
   messages,
-  setMessages,
+  // setMessages,
   input,
   setInput,
   onSendMessage,
   toggleSidebar,
 }) => {
-  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+  // const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const handleFileUpload = () => {
     //TODO
@@ -48,11 +48,11 @@ const ChatArea: React.FC<ChatAreaProps> = ({
       <div className={styles.chatContent}>
         <div className={styles.messagesContainer}>
           <ChatMessages messages={messages} />
-          {uploadProgress !== null && (
+          {/* {uploadProgress !== null && (
             <div className={styles.uploadProgress}>
               파일 업로드 중: {uploadProgress}%
             </div>
-          )}
+          )} */}
         </div>
       </div>
       <div className={styles.inputWrapper}>
