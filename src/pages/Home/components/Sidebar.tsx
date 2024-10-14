@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as styles from "./sidebar.css";
+import NavItem from "./NavItem";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -35,48 +36,30 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             로그인/회원가입
           </div>
           <nav>
-            <div
-              className={styles.sidebarNavItem}
-              onClick={() => handleNavigation("/find-expert")}
-            >
-              전문가찾기
-            </div>
-            <div
-              className={styles.sidebarNavItem}
+            <NavItem
+              onClick={() => handleNavigation("/expert")}
+              ItemName="전문가 찾기"
+            />
+            <NavItem
               onClick={() => handleNavigation("/qa")}
-            >
-              질문답변
-            </div>
-            <div
-              className={styles.sidebarNavItem}
+              ItemName="질문답변"
+            />
+            <NavItem
               onClick={() => handleNavigation("/posts")}
-            >
-              포스트
-            </div>
-            <div
-              className={styles.sidebarNavItem}
+              ItemName="포스트"
+            />
+            <NavItem
               onClick={() => handleNavigation("/pricing")}
-            >
-              비용안내
-            </div>
-            <div
-              className={styles.sidebarNavItem}
+              ItemName="비용안내"
+            />
+            <NavItem
               onClick={() => handleNavigation("/expert-signup")}
-            >
-              전문가 가입안내
-            </div>
-            <div
-              className={styles.sidebarNavItem}
+              ItemName="전문가 가입안내"
+            />
+            <NavItem
               onClick={() => handleNavigation("/chatting")}
-            >
-              챗봇
-            </div>
-            {/* <div
-              className={styles.sidebarNavItem}
-              onClick={() => handleNavigation("/help-center")}
-            >
-              헬프센터
-            </div> */}
+              ItemName="챗봇"
+            />
           </nav>
         </div>
       </div>

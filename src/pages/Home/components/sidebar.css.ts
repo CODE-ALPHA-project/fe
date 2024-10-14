@@ -68,13 +68,6 @@ export const sidebarLoginButton = style({
   cursor: "pointer",
 });
 
-export const sidebarNavItem = style({
-  padding: "10px 0",
-  margin: "10px",
-  borderBottom: "1px solid #eee",
-  cursor: "pointer",
-});
-
 export const overlay = style({
   position: "fixed",
   top: 0,

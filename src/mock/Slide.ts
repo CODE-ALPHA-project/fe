@@ -4,7 +4,7 @@ import secret from "../assets/img3.webp";
 export const slides = [
   {
     key: "a",
-    image: docs,
+    image: img2,
   },
   { key: "b", image: secret },
   {
