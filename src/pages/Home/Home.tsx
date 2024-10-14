@@ -1,10 +1,10 @@
 // page : MainPage //
 import React from "react";
 import * as styles from "./home.css";
-import Banner from "./components/Banner.tsx";
-import QnASection from "./components/QnASection.tsx";
-import MenuList from "./components/MenuList.tsx";
-import RecommendExpert from "./components/RecommendExpert.tsx";
+import Banner from "./components/features/Banner.tsx";
+import QnASection from "./components/features/QnASection.tsx";
+import MenuList from "./components/features/MenuList.tsx";
+import RecommendExpert from "./components/features/RecommendExpert.tsx";
 
 const Home = () => {
   return (

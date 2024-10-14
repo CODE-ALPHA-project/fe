@@ -1,7 +1,7 @@
 import React from "react";
 import * as styles from "./RecommendExpert.css";
 import { ExpertCard } from "./ExpertCard";
-import { getRandomExperts } from "../../../utils/getRandomExpert";
+import { getRandomExperts } from "../../../../utils/getRandomExpert";
 
 const RecommendExpert = () => {
   const randomExperts = getRandomExperts(3);

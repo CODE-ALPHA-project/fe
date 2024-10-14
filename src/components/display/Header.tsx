@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import * as styles from "./header.css";
-import { Sidebar } from "../../pages/Home/components/Sidebar.tsx";
-import { SearchBar } from "../../pages/Home/components/SearchBar.tsx";
+import { Sidebar } from "../../pages/Home/components/layout/Sidebar.tsx";
+import { SearchBar } from "../../pages/Home/components/layout/SearchBar.tsx";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();

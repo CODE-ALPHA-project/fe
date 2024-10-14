@@ -1,7 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import * as styles from "./qnasection.css";
-import { qnaItems } from "../../../mock/qna";
+import { qnaItems } from "../../../../mock/qna";
 import { useNavigate } from "react-router-dom";
 
 const QnASection: React.FC = () => {

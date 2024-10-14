@@ -1,7 +1,7 @@
 import React from "react";
 import * as styles from "./banner.css";
 import ImageSlider from "./ImageSlider";
-import { slides } from "../../../mock/Slide";
+import { slides } from "../../../../mock/Slide";
 
 const Banner: React.FC = () => {
   return (
