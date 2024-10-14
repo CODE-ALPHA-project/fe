@@ -17,9 +17,14 @@ const UploadModal: React.FC<UploadModalProps> = ({
   if (!isVisible) return null;
 
   const options = [
-    { icon: <FileText size={24} />, label: "파일", action: "file" },
-    { icon: <Image size={24} />, label: "이미지", action: "image" },
-    { icon: <Mic size={24} />, label: "음성", action: "audio" },
+    { icon: <FileText size={24} />, id: "파일", label: "파일", action: "file" },
+    {
+      icon: <Image size={24} />,
+      id: "이미지",
+      label: "이미지",
+      action: "image",
+    },
+    { icon: <Mic size={24} />, id: "음성", label: "음성", action: "audio" },
   ];
 
   return (
@@ -31,9 +36,9 @@ const UploadModal: React.FC<UploadModalProps> = ({
         <button className={styles.closeButton} onClick={onClose}>
           <X size={24} />
         </button>
-        {options.map((option, index) => (
+        {options.map((option) => (
           <button
-            key={index}
+            key={option.id}
             className={styles.optionButton}
             onClick={() => onOptionSelect(option.action)}
           >

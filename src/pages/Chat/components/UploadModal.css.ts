@@ -40,6 +40,9 @@ export const optionButton = style({
   border: "none",
   cursor: "pointer",
   padding: "10px",
+  ":hover": {
+    opacity: 0.75,
+  },
 });
 
 export const optionIcon = style({

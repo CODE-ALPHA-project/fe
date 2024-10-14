@@ -3,7 +3,7 @@ import * as styles from "./banner.css";
 import ImageSlider from "./ImageSlider";
 import { slides } from "../../../mock/Slide";
 
-export const Banner: React.FC = () => {
+const Banner: React.FC = () => {
   return (
     <div className={styles.banner}>
       <div className={styles.bannerContent}>
@@ -20,3 +20,5 @@ export const Banner: React.FC = () => {
     </div>
   );
 };
+
+export default Banner;

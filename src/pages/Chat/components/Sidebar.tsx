@@ -3,7 +3,7 @@
 import React from "react";
 import { MessageSquare, Settings, X } from "lucide-react";
 import * as styles from "./Sidebar.css";
-
+import img1 from "../../../assets/img1.webp";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -13,7 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
       <div className={styles.sidebarHeader}>
-        <div className={styles.logo}>역사</div>
+        <div className={styles.logo}>History</div>
         {isOpen && (
           <button onClick={onClose} className={styles.closeSidebarButton}>
             <X size={24} />
@@ -31,11 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </button>
       </nav>
       <div className={styles.profile}>
-        <img
-          src="/placeholder.svg?height=32&width=32"
-          alt="User"
-          className={styles.avatar}
-        />
+        <img src={img1} alt="User" className={styles.avatar} />
         <span>User</span>
       </div>
     </aside>
