@@ -2,21 +2,18 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
 import * as styles from "./ChatPage.css";
-
-interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "ai";
-}
+import { MessageRequestProps, MessageResponseProps } from "./types/type";
 
 const ChatPage: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<MessageRequestProps[]>([]);
   const [input, setInput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  //TODO : useQuery로 Message Get요청
+
   const handleSendMessage = (text: string) => {
     if (text.trim()) {
-      const newMessage: Message = {
+      const newMessage: MessageRequestProps = {
         id: Date.now(),
         text,
         sender: "user",
@@ -28,7 +25,7 @@ const ChatPage: React.FC = () => {
 
   const dummyRes = () => {
     setTimeout(() => {
-      const res: Message = {
+      const res: MessageResponseProps = {
         id: Date.now(),
         text: "어케 알았노?",
         sender: "ai",

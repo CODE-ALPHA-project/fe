@@ -21,9 +21,9 @@ const QnASection: React.FC = () => {
           <button className={styles.askButton}>질문 작성하기</button>
         </div>
         <div className={styles.qnaList}>
-          {displayItems.map((item, index) => (
+          {displayItems.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className={styles.qnaItem}
               onClick={() => navigate("/")}
             >

@@ -1,27 +1,15 @@
 // component : 채팅 영역 //
 
 import React from "react";
-import ChatHeader from "./ChatHeader";
+import ChatHeader from "../layout/ChatHeader";
 import ChatMessages from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import * as styles from "./ChatArea.css";
-
-interface File {
-  name: string;
-  url: string;
-  type: string;
-}
-
-interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "ai";
-  file?: File;
-}
+import { MessageRequestProps } from "../types/type";
 
 interface ChatAreaProps {
-  messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  messages: MessageRequestProps[];
+  setMessages: React.Dispatch<React.SetStateAction<MessageRequestProps[]>>;
   input: string;
   setInput: (input: string) => void;
   onSendMessage: (text: string) => void;

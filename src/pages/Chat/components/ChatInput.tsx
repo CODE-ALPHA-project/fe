@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { Paperclip, Send } from "lucide-react";
 import * as styles from "./ChatInput.css";
 import UploadModal from "./UploadModal";
-
 interface ChatInputProps {
   input: string;
   setInput: (input: string) => void;
@@ -18,6 +17,8 @@ const ChatInput: React.FC<ChatInputProps> = ({
 }) => {
   const [isUploadOptionsVisible, setIsUploadOptionsVisible] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  //TODO : useQuery로 Message Post요청
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
