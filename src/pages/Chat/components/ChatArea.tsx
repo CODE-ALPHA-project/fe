@@ -27,7 +27,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   // const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const handleFileUpload = () => {
-    //TODO
+    //TODO : 파일 업로드 기능 구현
   };
 
   return (

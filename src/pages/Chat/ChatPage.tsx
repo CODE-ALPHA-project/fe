@@ -9,7 +9,7 @@ const ChatPage: React.FC = () => {
   const [input, setInput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  //TODO : useQuery로 Message Get요청
+  //TODO : useQuery  AI 및 백엔드 서버 연결
 
   const handleSendMessage = (text: string) => {
     if (text.trim()) {
@@ -22,6 +22,7 @@ const ChatPage: React.FC = () => {
       dummyRes();
     }
   };
+  
 
   const dummyRes = () => {
     setTimeout(() => {

@@ -1,4 +1,4 @@
-import image from "../assets/ping.webp";
+import image from "../assets/img1.webp";
 interface QnAItem {
   id: string;
   category: string;
@@ -11,7 +11,7 @@ interface QnAItem {
 export const qnaItems: QnAItem[] = [
   {
     id: "1",
-    category: "으에으",
+    category: "임금",
     title: "임금체불에 관해 질문드립니다.",
     expertName: "우성현 노무사",
     expertImage: image,
@@ -20,7 +20,7 @@ export const qnaItems: QnAItem[] = [
   },
   {
     id: "2",
-    category: "으에으",
+    category: "임금",
     title: "임금체불에 관해 질문드립니다.",
     expertName: "우성현 노무사",
     expertImage: image,
@@ -29,7 +29,7 @@ export const qnaItems: QnAItem[] = [
   },
   {
     id: "3",
-    category: "으에으",
+    category: "임금",
     title: "임금체불에 관해 질문드립니다.",
     expertName: "우성현 노무사",
     expertImage: image,
@@ -38,7 +38,7 @@ export const qnaItems: QnAItem[] = [
   },
   {
     id: "4",
-    category: "으에으",
+    category: "임금",
     title: "임금체불에 관해 질문드립니다.",
     expertName: "우성현 노무사",
     expertImage: image,
@@ -47,7 +47,7 @@ export const qnaItems: QnAItem[] = [
   },
   {
     id: "5",
-    category: "으에으",
+    category: "임금",
     title: "임금체불에 관해 질문드립니다.",
     expertName: "우성현 노무사",
     expertImage: image,
