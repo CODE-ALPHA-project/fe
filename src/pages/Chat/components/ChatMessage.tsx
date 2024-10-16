@@ -2,20 +2,10 @@
 
 import React from "react";
 import * as styles from "./ChatMessage.css";
-
-interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "ai";
-  file?: {
-    name: string;
-    url: string;
-    type: string;
-  };
-}
+import { MessageRequestProps } from "../types/type";
 
 interface ChatMessageProps {
-  messages: Message[];
+  messages: MessageRequestProps[];
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ messages }) => {

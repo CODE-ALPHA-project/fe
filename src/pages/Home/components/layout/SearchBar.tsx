@@ -1,10 +1,7 @@
 import React, { useState, useRef } from "react";
 import * as styles from "./SearchBar.css";
-interface SearchBarProps {
-  placeholder: string;
-}
 
-export const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
+const SearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,7 +20,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
         ref={inputRef}
         id="search"
         type="search"
-        placeholder={placeholder}
+        placeholder="검색어를 입력해주세요.."
         className={styles.searchInput}
         value={searchQuery}
         onChange={handleInputChange}
@@ -34,3 +31,5 @@ export const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
     </form>
   );
 };
+
+export default SearchBar;

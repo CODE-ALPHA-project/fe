@@ -8,7 +8,7 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
 
   const handleNavigation = (path: string) => {
@@ -31,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </div>
           <div
             className={styles.sidebarLoginButton}
-            onClick={() => handleNavigation("/login")}
+            onClick={() => handleNavigation("/signin")}
           >
             로그인/회원가입
           </div>
@@ -70,3 +70,5 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     </>
   );
 };
+
+export default Sidebar;

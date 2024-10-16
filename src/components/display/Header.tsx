@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import * as styles from "./header.css";
-import { Sidebar } from "../../pages/Home/components/Sidebar.tsx";
-import { SearchBar } from "../../pages/Home/components/SearchBar.tsx";
+import Sidebar from "../../pages/Home/components/layout/Sidebar.tsx";
+import SearchBar from "../../pages/Home/components/layout/SearchBar.tsx";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
         </div>
         <div className={styles.userActions}></div>
       </div>
-      <SearchBar placeholder="전문가/질문답변 검색" />
+      <SearchBar />
     </header>
   );
 
@@ -35,9 +35,11 @@ export const Header: React.FC = () => {
         <div className={styles.logo} onClick={() => navigate("/")}>
           service
         </div>
-        <SearchBar placeholder="업무/전문가/질문답변 검색" />
+        <SearchBar />
         <div className={styles.desktopUserActions}>
-          <span className={styles.userMenu}>로그인</span>
+          <span className={styles.userMenu} onClick={() => navigate("/signin")}>
+            로그인
+          </span>
           <span className={styles.userMenu}>전문가 가입안내</span>
         </div>
       </div>
