@@ -1,51 +1,95 @@
-import { useEffect, useState, useCallback } from "react";
-import { Client, Message } from "@stomp/stompjs";
+import { useState, useEffect, useCallback, useRef } from 'react';
+import SockJS from 'sockjs-client';
+import { Stomp, CompatClient } from '@stomp/stompjs';
 
 interface UseChatProps {
-  url: string;
+  serverUrl: string;
   topic: string;
-  onMessageReceived?: (message: string) => void;
+  chatRoomId: string;
 }
 
-export const useChat = ({ url, topic, onMessageReceived }: UseChatProps) => {
-  const [client, setClient] = useState<Client | null>(null);
+interface ParsedMessage {
+  answer: string;
+  references: Array<{
+    law: string;
+    chapter: string;
+    title: string;
+  }>;
+}
+
+export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
+  const [connected, setConnected] = useState(false);
+  const [messages, setMessages] = useState<ParsedMessage[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const stompClientRef = useRef<CompatClient | null>(null);
+
+  const handleMessage = useCallback((message: string) => {
+    console.log("Received raw message:", message);
+    try {
+      const parsedMessage:ParsedMessage = JSON.parse(message);
+      console.log("Parsed message:", parsedMessage);
+      setMessages((prevMessages) => [...prevMessages, parsedMessage]);
+    } catch (err) {
+      console.error("Error parsing message:", err);
+      setError("Failed to parse incoming message");
+    }
+  }, []);
 
   useEffect(() => {
-    const stompClient = new Client({
-      brokerURL: url,
-      onConnect: () => {
-        stompClient.subscribe(topic, (message: Message) => {
-          if (message.body && onMessageReceived) {
-            try {
-              onMessageReceived(JSON.parse(message.body));
-            } catch (error) {
-              console.error("Error parsing message body:", error);
-            }
-          }
+    const socket = new SockJS(serverUrl);
+    const stompClient = Stomp.over(socket);
+    stompClientRef.current = stompClient;
+
+    stompClient.connect({},
+      (frame: string) => {
+        console.log("Connected: " + frame);
+        setConnected(true);
+        setError(null);
+
+        stompClient.subscribe("/topic/answers/"+chatRoomId, (message) => {
+          handleMessage(message.body);
         });
       },
-      onStompError: (frame) => {
-        console.error("Broker reported error:", frame.headers["message"]);
-        console.error("Additional details:", frame.body);
-      },
-    });
-
-    setClient(stompClient);
-    stompClient.activate();
+      (err: string) => {
+        console.error("Connection error: ", err);
+        setError(`Connection failed: ${err.toString()}`);
+        setConnected(false);
+      }
+    );
 
     return () => {
-      stompClient.deactivate();
-    };
-  }, [url, topic, onMessageReceived]);
-
-  const sendMessage = useCallback(
-    (destination: string, message: string) => {
-      if (client?.connected) {
-        client.publish({ destination, body: JSON.stringify(message) });
+      if (stompClient.connected) {
+        stompClient.disconnect(() => {
+          console.log("Disconnected");
+          setConnected(false);
+        });
       }
-    },
-    [client],
-  );
+    };
+  }, [serverUrl, topic, chatRoomId, handleMessage]);
 
-  return { sendMessage };
+  const sendMessage = useCallback((message: string) => {
+    if (stompClientRef.current && stompClientRef.current.connected) {
+      const requestPayload = {
+        message,
+        chatRoomId,
+      };
+      stompClientRef.current.send("/app/send", {}, JSON.stringify(requestPayload));
+      console.log("Message sent:", message);
+    } else {
+      console.error("STOMP client is not connected");
+      setError("Failed to send message: Not connected");
+    }
+  }, [chatRoomId]);
+
+  const clearMessages = useCallback(() => {
+    setMessages([]);
+  }, []);
+
+  return {
+    connected,
+    messages,
+    sendMessage,
+    clearMessages,
+    error,
+  };
 };

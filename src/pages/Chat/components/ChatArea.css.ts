@@ -41,3 +41,11 @@ export const uploadProgress = style({
   borderRadius: vars.borderRadius.medium,
   margin: vars.space.medium,
 });
+
+export const connectionStatus=style({
+  backgroundColor: "#ffcccc",
+  color: "#ff0000",
+  padding: "10px",
+  textAlign: "center",
+  fontWeight: "bold"
+});
