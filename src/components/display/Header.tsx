@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import * as styles from "./header.css";
 import Sidebar from "../../pages/Home/components/layout/Sidebar.tsx";
 import SearchBar from "../../pages/Home/components/layout/SearchBar.tsx";
+import { BellDot } from "lucide-react"
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ export const Header: React.FC = () => {
         </div>
         <div className={styles.logo} onClick={() => navigate("/")}>
           service
+        </div>
+        <div className={styles.menuIcon}>
+          <BellDot />
         </div>
         <div className={styles.userActions}></div>
       </div>

@@ -1,38 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
 import * as styles from "./ChatPage.css";
 import { MessageRequestProps, MessageResponseProps } from "./types/type";
+import { useChat } from "../../hooks/useChat";
 
 const ChatPage: React.FC = () => {
-  const [messages, setMessages] = useState<MessageRequestProps[]>([]);
   const [input, setInput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { sendMessage, connected, messages: chatMessages } = useChat({
+    serverUrl: "http://192.168.0.25:8080/ws",
+    topic: "/topic/messages",
+    chatRoomId: "12345"
+  });
 
-  //TODO : useQuery  AI 및 백엔드 서버 연결
+  const [displayMessages, setDisplayMessages] = useState<(MessageRequestProps | MessageResponseProps)[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Listen for changes in chatMessages and update displayMessages
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      const latestMessage = chatMessages[chatMessages.length - 1];
+      const newMessage: MessageResponseProps = {
+        id: Date.now(),
+        text: latestMessage.answer,
+        sender: "ai",
+        references: latestMessage.references
+      };
+      setDisplayMessages(prevMessages => [...prevMessages, newMessage]);
+    }
+  }, [chatMessages]);
+
+  // Scroll to the bottom whenever displayMessages is updated
+  useEffect(() => {
+    scrollToBottom();
+  }, [displayMessages]);
 
   const handleSendMessage = (text: string) => {
-    if (text.trim()) {
+    if (text.trim() && connected) {
       const newMessage: MessageRequestProps = {
         id: Date.now(),
         text,
         sender: "user",
       };
-      setMessages([...messages, newMessage]);
-      dummyRes();
+      sendMessage(text);
+      setDisplayMessages((prevMessages) => [...prevMessages, newMessage]);
+      setInput("");
     }
-  };
-  
-
-  const dummyRes = () => {
-    setTimeout(() => {
-      const res: MessageResponseProps = {
-        id: Date.now(),
-        text: "어케 알았노?",
-        sender: "ai",
-      };
-      setMessages((prevMessages) => [...prevMessages, res]);
-    }, 1000);
   };
 
   const toggleSidebar = () => {
@@ -44,13 +62,16 @@ const ChatPage: React.FC = () => {
       <div className={styles.container}>
         <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
         <ChatArea
-          messages={messages}
-          setMessages={setMessages}
+          messages={displayMessages}
+          setMessages={setDisplayMessages}
           input={input}
           setInput={setInput}
           onSendMessage={handleSendMessage}
           toggleSidebar={toggleSidebar}
+          isConnected={connected}
+          messagesEndRef={messagesEndRef}
         />
+        <div ref={messagesEndRef} />
       </div>
     </div>
   );

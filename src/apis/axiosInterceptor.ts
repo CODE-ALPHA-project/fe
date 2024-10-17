@@ -7,7 +7,9 @@ const axiosInstance = axios.create({
 // todo : Router API 주소 설정 및 Interceptor 작성 //
 
 // function : Axios 요청시 Interceptor //
-axiosInstance.interceptors.request.use();
+axiosInstance.interceptors.request.use(
+
+);
 
 // function : Axios 응답시 Interceptor //
 axiosInstance.interceptors.response.use();

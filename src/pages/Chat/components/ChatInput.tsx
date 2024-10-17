@@ -1,12 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Paperclip, Send } from "lucide-react";
 import * as styles from "./ChatInput.css";
 import UploadModal from "./UploadModal";
+
 interface ChatInputProps {
   input: string;
-  setInput: (input: string) => void;
+  setInput: React.Dispatch<React.SetStateAction<string>>; // 수정된 부분
   onSendMessage: (text: string) => void;
   onFileUpload: (file: File) => void;
+  isDisabled: boolean;
 }
 
 const ChatInput: React.FC<ChatInputProps> = ({
@@ -14,15 +16,15 @@ const ChatInput: React.FC<ChatInputProps> = ({
   setInput,
   onSendMessage,
   onFileUpload,
+  isDisabled,
 }) => {
   const [isUploadOptionsVisible, setIsUploadOptionsVisible] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  //TODO : useQuery로 Message Post요청
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
+    if (input.trim() && !isDisabled) {
       onSendMessage(input);
       setInput("");
     }
@@ -30,12 +32,14 @@ const ChatInput: React.FC<ChatInputProps> = ({
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
+    if (file && !isDisabled) {
       onFileUpload(file);
     }
   };
 
   const handleOptionSelect = (option: string) => {
+    if (isDisabled) return;
+
     switch (option) {
       case "file":
       case "image":
@@ -48,24 +52,58 @@ const ChatInput: React.FC<ChatInputProps> = ({
     setIsUploadOptionsVisible(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && e.ctrlKey) {
+      e.preventDefault();
+      setInput((prev) => prev + "\n");
+      if (textareaRef.current) {
+        const { selectionStart, selectionEnd } = textareaRef.current;
+        setTimeout(() => {
+          textareaRef.current?.setSelectionRange(
+            selectionStart + 1,
+            selectionEnd + 1,
+          );
+        }, 0);
+      }
+    } else if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.inputForm}>
         <button
           type="button"
-          onClick={() => setIsUploadOptionsVisible(true)}
-          className={styles.uploadButton}
+          onClick={() => !isDisabled && setIsUploadOptionsVisible(true)}
+          className={`${styles.uploadButton} ${styles.buttonVariants[isDisabled ? "disabled" : "enabled"]}`}
+          disabled={isDisabled}
         >
           <Paperclip size={20} />
         </button>
-        <input
-          type="text"
+        <textarea
+          ref={textareaRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="입력 여기에 문자"
-          className={styles.input}
+          onKeyDown={handleKeyDown}
+          placeholder={isDisabled ? "연결 중..." : "메시지를 입력해주세요"}
+          className={styles.inputVariants[isDisabled ? "disabled" : "enabled"]}
+          disabled={isDisabled}
+          rows={1}
+          style={{
+            resize: "none",
+            overflow: "hidden",
+            fontFamily: "Arial, sans-serif",
+            fontSize: "14px",
+            lineHeight: "1.5",
+          }}
         />
-        <button type="submit" className={styles.sendButton}>
+        <button
+          type="submit"
+          className={`${styles.sendButton} ${styles.buttonVariants[isDisabled ? "disabled" : "enabled"]}`}
+          disabled={isDisabled}
+        >
           <Send size={20} />
         </button>
       </form>
@@ -75,9 +113,10 @@ const ChatInput: React.FC<ChatInputProps> = ({
         onChange={handleFileChange}
         accept="image/*,.pdf,.doc,.docx,.txt"
         style={{ display: "none" }}
+        disabled={isDisabled}
       />
       <UploadModal
-        isVisible={isUploadOptionsVisible}
+        isVisible={isUploadOptionsVisible && !isDisabled}
         onClose={() => setIsUploadOptionsVisible(false)}
         onOptionSelect={handleOptionSelect}
       />

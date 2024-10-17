@@ -3,9 +3,10 @@ import react from "@vitejs/plugin-react-swc";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), vanillaExtractPlugin()],  
+  plugins: [react(), vanillaExtractPlugin()],
   /**proxy configuration for communicating with spring */
   server: {
+    host:true,
     open: "/",
     proxy: {
         "/api/v1": {
@@ -14,4 +15,7 @@ export default defineConfig({
         },
     },
   },
+  // define:{
+  //   global:{}
+  // }
 });
