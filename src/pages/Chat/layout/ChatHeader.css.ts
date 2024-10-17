@@ -43,10 +43,4 @@ export  const connectionStatus=style( {
   display: "flex",
   alignItems: "center",
   marginRight: "10px",
-  selectors:{
-    "&span":{
-      marginLeft: "5px",
-      fontSize: "14px",
-    }
-  }
 });
