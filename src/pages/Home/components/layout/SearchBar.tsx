@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import * as styles from "./SearchBar.css";
 
 const SearchBar: React.FC = () => {

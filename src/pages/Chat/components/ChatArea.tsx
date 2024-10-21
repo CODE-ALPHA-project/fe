@@ -1,4 +1,4 @@
-import React,{RefObject} from "react";
+import React, { RefObject } from "react";
 import ChatHeader from "../layout/ChatHeader";
 import ChatMessages from "./ChatMessage";
 import ChatInput from "./ChatInput";
@@ -7,7 +7,9 @@ import { MessageRequestProps, MessageResponseProps } from "../types/type";
 
 interface ChatAreaProps {
   messages: (MessageRequestProps | MessageResponseProps)[];
-  setMessages: React.Dispatch<React.SetStateAction<(MessageRequestProps | MessageResponseProps)[]>>;
+  setMessages: React.Dispatch<
+    React.SetStateAction<(MessageRequestProps | MessageResponseProps)[]>
+  >;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   onSendMessage: (text: string) => void;
@@ -16,10 +18,16 @@ interface ChatAreaProps {
   messagesEndRef: RefObject<HTMLDivElement>;
   // error:string;
 }
+
 //setMessages,
-const ChatArea: React.FC<ChatAreaProps> =
-  ({ messages,  input, setInput, onSendMessage, toggleSidebar, isConnected,}) =>
-  {
+const ChatArea: React.FC<ChatAreaProps> = ({
+  messages,
+  input,
+  setInput,
+  onSendMessage,
+  toggleSidebar,
+  isConnected,
+}) => {
   const handleFileUpload = () => {
     //TODO : 파일 업로드 기능 구현
   };

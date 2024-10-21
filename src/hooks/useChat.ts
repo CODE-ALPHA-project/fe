@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import SockJS from 'sockjs-client';
-import { Stomp, CompatClient } from '@stomp/stompjs';
+import { useCallback, useEffect, useRef, useState } from "react";
+import SockJS from "sockjs-client";
+import { CompatClient, Stomp } from "@stomp/stompjs";
 
 interface UseChatProps {
   serverUrl: string;
@@ -26,7 +26,7 @@ export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
   const handleMessage = useCallback((message: string) => {
     console.log("Received raw message:", message);
     try {
-      const parsedMessage:ParsedMessage = JSON.parse(message);
+      const parsedMessage: ParsedMessage = JSON.parse(message);
       console.log("Parsed message:", parsedMessage);
       setMessages((prevMessages) => [...prevMessages, parsedMessage]);
     } catch (err) {
@@ -40,13 +40,14 @@ export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
     const stompClient = Stomp.over(socket);
     stompClientRef.current = stompClient;
 
-    stompClient.connect({},
+    stompClient.connect(
+      {},
       (frame: string) => {
         console.log("Connected: " + frame);
         setConnected(true);
         setError(null);
 
-        stompClient.subscribe("/topic/answers/"+chatRoomId, (message) => {
+        stompClient.subscribe("/topic/answers/" + chatRoomId, (message) => {
           handleMessage(message.body);
         });
       },
@@ -54,7 +55,7 @@ export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
         console.error("Connection error: ", err);
         setError(`Connection failed: ${err.toString()}`);
         setConnected(false);
-      }
+      },
     );
 
     return () => {
@@ -67,19 +68,26 @@ export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
     };
   }, [serverUrl, topic, chatRoomId, handleMessage]);
 
-  const sendMessage = useCallback((message: string) => {
-    if (stompClientRef.current && stompClientRef.current.connected) {
-      const requestPayload = {
-        message,
-        chatRoomId,
-      };
-      stompClientRef.current.send("/app/send", {}, JSON.stringify(requestPayload));
-      console.log("Message sent:", message);
-    } else {
-      console.error("STOMP client is not connected");
-      setError("Failed to send message: Not connected");
-    }
-  }, [chatRoomId]);
+  const sendMessage = useCallback(
+    (message: string) => {
+      if (stompClientRef.current && stompClientRef.current.connected) {
+        const requestPayload = {
+          message,
+          chatRoomId,
+        };
+        stompClientRef.current.send(
+          "/app/send",
+          {},
+          JSON.stringify(requestPayload),
+        );
+        console.log("Message sent:", message);
+      } else {
+        console.error("STOMP client is not connected");
+        setError("Failed to send message: Not connected");
+      }
+    },
+    [chatRoomId],
+  );
 
   const clearMessages = useCallback(() => {
     setMessages([]);

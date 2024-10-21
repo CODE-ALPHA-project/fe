@@ -42,10 +42,10 @@ export const uploadProgress = style({
   margin: vars.space.medium,
 });
 
-export const connectionStatus=style({
+export const connectionStatus = style({
   backgroundColor: "#ffcccc",
   color: "#ff0000",
   padding: "10px",
   textAlign: "center",
-  fontWeight: "bold"
+  fontWeight: "bold",
 });

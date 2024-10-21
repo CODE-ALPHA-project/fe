@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import * as styles from "./imageslider.css";
 import { useSlide } from "../../../../hooks/useSlide";
 import { getWebPPath } from "../../../../utils/getWebp";

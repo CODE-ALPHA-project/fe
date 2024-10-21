@@ -1,4 +1,5 @@
 import image from "../assets/img1.webp";
+
 interface QnAItem {
   id: string;
   category: string;

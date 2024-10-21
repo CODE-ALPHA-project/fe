@@ -4,6 +4,7 @@ import React from "react";
 import { MessageSquare, Settings, X } from "lucide-react";
 import * as styles from "./Sidebar.css";
 import img1 from "../../../assets/img1.webp";
+
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;

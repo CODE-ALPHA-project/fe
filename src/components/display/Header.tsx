@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import * as styles from "./header.css";
 import Sidebar from "../../pages/Home/components/layout/Sidebar.tsx";
 import SearchBar from "../../pages/Home/components/layout/SearchBar.tsx";
-import { BellDot } from "lucide-react"
+import { BellDot } from "lucide-react";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();

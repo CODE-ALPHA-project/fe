@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useSlide = (totalSlides: number, intervalTime: number = 5000) => {
   const [currentSlide, setCurrentSlide] = useState(1);
