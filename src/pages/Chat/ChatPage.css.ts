@@ -1,4 +1,4 @@
-import { style, createTheme } from "@vanilla-extract/css";
+import { createTheme, style } from "@vanilla-extract/css";
 
 export const [themeClass, vars] = createTheme({
   color: {
@@ -25,4 +25,3 @@ export const container = style({
   height: "100vh",
   position: "relative",
 });
-

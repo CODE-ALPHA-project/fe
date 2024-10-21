@@ -39,7 +39,7 @@ export const homeButton = style({
   color: vars.color.text,
 });
 
-export  const connectionStatus=style( {
+export const connectionStatus = style({
   display: "flex",
   alignItems: "center",
   marginRight: "10px",

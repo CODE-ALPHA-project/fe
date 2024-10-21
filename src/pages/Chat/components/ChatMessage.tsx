@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as styles from "./ChatMessage.css";
 import { MessageRequestProps } from "../types/type";
 import ReactMarkdown from "react-markdown";

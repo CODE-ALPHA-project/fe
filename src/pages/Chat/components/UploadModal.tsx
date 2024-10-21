@@ -9,6 +9,7 @@ interface UploadModalProps {
   onClose: () => void;
   onOptionSelect: (option: string) => void;
 }
+
 const UploadModal: React.FC<UploadModalProps> = ({
   isVisible,
   onClose,
