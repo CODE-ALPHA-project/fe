@@ -1,0 +1,85 @@
+#### 0.0.0 (2024-10-26)
+
+##### Chores
+
+*  axiosInstance 주석 처리 (4c80d7cc)
+*  Add Jest.config.ts (c989a072)
+
+##### Documentation Changes
+
+* **문서:** git message 테스트용 <BLANK LINE> commit template <BLANK LINE> (91de9418)
+
+##### New Features
+
+* **chat:** 채팅 연결 및 채팅관련 UI수정 (e2b760a6)
+*  MainPage prototype (230c2113)
+
+##### Other Changes
+
+*  image modify (08a60047)
+*  modify props and make Auth folder (9ebc527c)
+*  modify folder architecture (17527f00)
+*  image modify (3ca19cdb)
+*  seperate HomePage module (bd98ce21)
+*  delete deprecated module (729a3f36)
+*  remove unused variables (be3318ca)
+*  Implement chat pages and components (645a6b9c)
+*  Chatting page (47f705df)
+*  remove the unused file (b8a9c5c9)
+*  refactor css in home page (f9f7eafd)
+*  modify image (0bd6f2b0)
+*  remove image (ae4ef688)
+*  Modify Case (39b120a2)
+*  rename (d89251e8)
+*  rename file (a2d148ae)
+*  rename file (a297fc4a)
+*  modify tsconfig (81c91f91)
+*  modify tsconfig (4f654764)
+*  add global.d.ts (27ad69f0)
+*  remove import *.ts (dc07007c)
+*  Add Menu Card (2d5f86fd)
+*  rename css file name (32538f66)
+*  Removing Unnecessary Elements from Mobile Header (1e96ec2b)
+* //github.com/CODE-ALPHA-project/fe into kgh/chat (d458b59b)
+*  Delete unnecessary annotations and files (88709f04)
+*  HomePage 디자인 수정 (e5b9ad13)
+* //github.com/CODE-ALPHA-project/fe into kgh/chat (e8724dbc)
+*  add useChat test (a0e011a9)
+*  config test enviroment (01c0bf57)
+*  refactor message type (eb5db1d0)
+*  add stomp package (6043372e)
+*  add useChat that is Custom Hook for using Stomp. (26d8a376)
+*  add package that is Stomp (55f4261b)
+*  change components that position is Header and  Footer. (fb852f8d)
+*  add chatting components (c0bd8aaa)
+*  ts version up (de0ec12a)
+*  automize the lint about pre-commit and pre-push (f93d2f3e)
+*  add husky (743ebaf3)
+*  convert to react version setting (0ba723a9)
+*  add package for lint automization - typescript version down (current version is not supported with husky) - add husky (aca7d6a3)
+*  move the ImageSilder into display folder (60c13d04)
+* //github.com/CODE-ALPHA-project/fe into develop (8ef74a4a)
+* //github.com/CODE-ALPHA-project/fe into develop (47883bb9)
+*  fix side margin (0d756403)
+*  modify footer style (9bac0f00)
+*  add proxy setting (026d618e)
+*  remove the unused comment in tsconfig.app.json (abdaffc2)
+*  @types/node 추가 (db202baa)
+*  add import React (9e1ff6fe)
+*  add import React (496b730a)
+*  fix the tsconfig node file (ed630e6c)
+*  fix the jsx as react (77cd102b)
+*  module version change (ES6->ESNext) (1e23e415)
+*  resolve conflict in App.tsx (36791f76)
+* //github.com/CODE-ALPHA-project/fe into develop (009677a8)
+*  config file modified (77cb796d)
+*  add Layout Structure to add  simply layout (87d1c9ba)
+*  package 추가 (ca6ddc77)
+*  add issue & pr template (0a8fae87)
+
+##### Code Style Changes
+
+* **all:**  코드 포맷 설정 (e110dcd2)
+*  안 쓰는 css selector 제거 (3db53256)
+*  Fix main tag's padding (04a0d753)
+

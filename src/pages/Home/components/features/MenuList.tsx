@@ -59,9 +59,9 @@ const MenuList: React.FC = () => {
           }
           description={
             <>
-              비자
+              필요한 외국인 정보는
               <br />
-              갱신해라
+              바로 찾아가세요!
             </>
           }
           onClick={() => navigator("/")}

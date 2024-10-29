@@ -22,20 +22,22 @@ export const top = style({
   },
 });
 
+export const logo = style({
+  fontSize: "24px",
+  fontWeight: "bold",
+  cursor: "pointer",
+});
+
 export const menuIcon = style({
   fontSize: "24px",
   cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
   "@media": {
     [`screen and (min-width: ${mobileBreakpoint})`]: {
       display: "none",
     },
   },
-});
-
-export const logo = style({
-  fontSize: "24px",
-  fontWeight: "bold",
-  cursor: "pointer",
 });
 
 export const userActions = style({
@@ -126,4 +128,22 @@ export const desktopNav = style({
   gap: "30px",
   padding: "10px 0",
   borderTop: "1px solid #eee",
+});
+
+// 추가된 스타일
+export const mobileRightSection = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+});
+
+export const searchBarWrapper = style({
+  padding: "0 15px",
+  "@media": {
+    [`screen and (min-width: ${mobileBreakpoint})`]: {
+      padding: 0,
+      maxWidth: "400px",
+      width: "100%",
+    },
+  },
 });

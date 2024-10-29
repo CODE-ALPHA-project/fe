@@ -1,15 +1,13 @@
-import docs from "../assets/img1.webp";
-import img2 from "../assets/img2.webp";
-import secret from "../assets/img3.webp";
+import gorv from "../assets/gorv.webp";
 
 export const slides = [
   {
     key: "a",
-    image: docs,
+    image: gorv,
   },
-  { key: "b", image: secret },
+  { key: "b", image: gorv },
   {
     key: "c",
-    image: img2,
+    image: gorv,
   },
 ];

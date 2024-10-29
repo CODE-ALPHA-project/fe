@@ -20,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <>
       <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
         <div className={styles.sidebarHeader}>
-          <span className={styles.sidebarLogo}>service</span>
+          <span className={styles.sidebarLogo}>LAWBOT</span>
           <button className={styles.sidebarCloseButton} onClick={onClose}>
             ×
           </button>

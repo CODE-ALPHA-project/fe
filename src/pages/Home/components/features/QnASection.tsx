@@ -14,7 +14,7 @@ const QnASection: React.FC = () => {
       <div className={styles.qnaSectionContent}>
         <h2 className={styles.sectionTitle}>질문답변으로 간단한 상담받기</h2>
         <p className={styles.sectionDescription}>
-          간단한 노사문제는 직접 질문해보세요~
+          간단한 노사문제는 질문을 통해 해결하세요!
         </p>
         <div className={styles.buttonContainer}>
           <button className={styles.qnaButton}>질문답변 전체보기</button>

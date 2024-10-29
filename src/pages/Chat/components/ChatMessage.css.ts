@@ -8,7 +8,7 @@ export const chatMessages = style({
 
 export const message = style({
   marginBottom: vars.space.medium,
-  maxWidth: "70%",
+  maxWidth: "90%",
 });
 
 export const userMessage = style([
