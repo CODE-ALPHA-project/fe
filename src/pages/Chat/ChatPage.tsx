@@ -75,7 +75,6 @@ const ChatPage: React.FC = () => {
           onSendMessage={handleSendMessage}
           toggleSidebar={toggleSidebar}
           isConnected={connected}
-          messagesEndRef={messagesEndRef}
         />
         <div ref={messagesEndRef} />
       </div>

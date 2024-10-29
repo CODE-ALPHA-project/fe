@@ -49,6 +49,24 @@ export const aiBubble = style([
   },
 ]);
 
+// AI 버블 내부의 마크다운 스타일
+export const markdownPre = style({
+  margin: "8px 0",
+  padding: "12px",
+  backgroundColor: "#e5e7eb",
+  borderRadius: vars.borderRadius.small,
+  overflowX: "auto",
+});
+
+export const markdownCode = style({
+  fontFamily: "monospace",
+  fontSize: "14px",
+});
+
+export const markdownParagraph = style({
+  margin: "8px 0",
+});
+
 export const fileAttachment = style({
   marginTop: vars.space.small,
 });
@@ -67,3 +85,49 @@ export const attachedFile = style({
   borderRadius: vars.borderRadius.small,
   textDecoration: "none",
 });
+
+export const markdownContainer = style({
+  position: "relative",
+  display: "inline-block",
+  width: "100%",
+});
+
+export const markdownList = style({
+  paddingLeft: "20px",
+  margin: "8px 0",
+});
+
+export const markdownListItem = style({
+  margin: "4px 0",
+});
+
+export const markdownBlockquote = style({
+  borderLeft: `4px solid ${vars.color.secondary}`,
+  paddingLeft: "12px",
+  margin: "8px 0",
+  color: "#4B5563",
+});
+
+export const markdownLink = style({
+  color: vars.color.accent,
+  textDecoration: "underline",
+});
+
+export const markdownTable = style({
+  borderCollapse: "collapse",
+  width: "100%",
+  margin: "8px 0",
+});
+
+export const markdownTableCell = style({
+  border: `1px solid ${vars.color.secondary}`,
+  padding: "8px",
+  textAlign: "left",
+});
+
+export const markdownTableHeader = style([
+  markdownTableCell,
+  {
+    backgroundColor: "#e5e7eb",
+  },
+]);
