@@ -9,6 +9,7 @@ export const expertContainer = style({
   },
 });
 export const sectionTitle = style({
+  marginLeft: "10px",
   fontSize: "24px",
   fontWeight: "bold",
   marginBottom: "20px",

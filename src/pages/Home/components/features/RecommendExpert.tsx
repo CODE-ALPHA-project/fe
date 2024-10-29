@@ -8,7 +8,7 @@ const RecommendExpert = () => {
 
   return (
     <div className={styles.expertContainer}>
-      <h2 className={styles.sectionTitle}>⭐추천노무사⭐</h2>
+      <h2 className={styles.sectionTitle}>오늘의 추천노무사</h2>
       <section className={styles.expertsSection}>
         {randomExperts.map((expert, index) => (
           <ExpertCard key={index} {...expert} />

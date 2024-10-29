@@ -1,4 +1,4 @@
-import image from "../assets/img1.webp";
+import image from "../assets/image.webp";
 
 interface QnAItem {
   id: string;

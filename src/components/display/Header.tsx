@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { BellDot, Menu } from "lucide-react";
 import * as styles from "./header.css";
-import Sidebar from "../../pages/Home/components/layout/Sidebar.tsx";
-import SearchBar from "../../pages/Home/components/layout/SearchBar.tsx";
-import { BellDot } from "lucide-react";
+import Sidebar from "../../pages/Home/components/layout/Sidebar";
+import SearchBar from "../../pages/Home/components/layout/SearchBar";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -19,17 +19,21 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.top}>
         <div className={styles.menuIcon} onClick={toggleSidebar}>
-          ☰
+          <Menu size={24} />
         </div>
         <div className={styles.logo} onClick={() => navigate("/")}>
-          service
+          LAWBOT
         </div>
-        <div className={styles.menuIcon}>
-          <BellDot />
+        <div className={styles.mobileRightSection}>
+          <div className={styles.menuIcon}>
+            <BellDot size={24} />
+          </div>
+          <div className={styles.userActions}></div>
         </div>
-        <div className={styles.userActions}></div>
       </div>
-      <SearchBar />
+      <div className={styles.searchBarWrapper}>
+        <SearchBar />
+      </div>
     </header>
   );
 
@@ -37,14 +41,21 @@ export const Header: React.FC = () => {
     <header className={styles.desktopHeader}>
       <div className={styles.desktopTop}>
         <div className={styles.logo} onClick={() => navigate("/")}>
-          service
+          LAWBOT
         </div>
-        <SearchBar />
+        <div className={styles.searchBarWrapper}>
+          <SearchBar />
+        </div>
         <div className={styles.desktopUserActions}>
-          <span className={styles.userMenu} onClick={() => navigate("/signin")}>
+          <span
+            className={`${styles.userMenu} ${styles.loginMenu}`}
+            onClick={() => navigate("/signin")}
+          >
             로그인
           </span>
-          <span className={styles.userMenu}>전문가 가입안내</span>
+          <span className={`${styles.userMenu} ${styles.signupMenu}`}>
+            전문가 가입안내
+          </span>
         </div>
       </div>
       <nav className={styles.desktopNav}>
@@ -66,3 +77,5 @@ export const Header: React.FC = () => {
     </>
   );
 };
+
+export default Header;
