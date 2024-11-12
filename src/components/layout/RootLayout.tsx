@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../display/Header";
 import Footer from "../display/Footer";
-import { defaultLayout } from "./Layout.css";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -20,7 +19,7 @@ const RootLayout = () => {
   return (
     <>
       {!shouldHideHeaderFooter && <Header />}
-      <main role="main" className={defaultLayout}>
+      <main role="main">
         <Outlet />
       </main>
       {!shouldHideHeaderFooter && <Footer />}
