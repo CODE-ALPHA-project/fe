@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./NavItem.css";
+import { Button } from "@/components/ui/button";
 
 interface NavItemProps {
   onClick: () => void;
@@ -8,11 +8,13 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ onClick, ItemName }) => {
   return (
-    <>
-      <div className={styles.sidebarNavItem} onClick={onClick}>
-        {ItemName}
-      </div>
-    </>
+    <Button
+      variant="ghost"
+      className="w-full justify-start font-medium px-4 py-2 border-b border-gray-100 hover:bg-gray-50"
+      onClick={onClick}
+    >
+      {ItemName}
+    </Button>
   );
 };
 

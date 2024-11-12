@@ -1,33 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useChat } from "../../hooks/useChat";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
-import * as styles from "./ChatPage.css";
 import { MessageRequestProps, MessageResponseProps } from "./types/type";
-import { useChat } from "../../hooks/useChat";
+import { cn } from "@/lib/utils";
 
 const ChatPage: React.FC = () => {
+  // State management
   const [input, setInput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [displayMessages, setDisplayMessages] = useState<
+    (MessageRequestProps | MessageResponseProps)[]
+  >([]);
+
+  // Refs
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Chat connection
   const {
     sendMessage,
     connected,
     messages: chatMessages,
   } = useChat({
-    serverUrl: "http://192.168.0.25:8080/ws",
+    serverUrl: "http://192.168.174.133:8080/ws",
     topic: "/topic/messages",
     chatRoomId: "12345",
   });
 
-  const [displayMessages, setDisplayMessages] = useState<
-    (MessageRequestProps | MessageResponseProps)[]
-  >([]);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  // Listen for changes in chatMessages and update displayMessages
+  // Update messages when new ones arrive
   useEffect(() => {
     if (chatMessages.length > 0) {
       const latestMessage = chatMessages[chatMessages.length - 1];
@@ -41,11 +41,7 @@ const ChatPage: React.FC = () => {
     }
   }, [chatMessages]);
 
-  // Scroll to the bottom whenever displayMessages is updated
-  useEffect(() => {
-    scrollToBottom();
-  }, [displayMessages]);
-
+  // Message handlers
   const handleSendMessage = (text: string) => {
     if (text.trim() && connected) {
       const newMessage: MessageRequestProps = {
@@ -59,24 +55,54 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
-    <div className={styles.themeClass}>
-      <div className={styles.container}>
-        <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
-        <ChatArea
-          messages={displayMessages}
-          setMessages={setDisplayMessages}
-          input={input}
-          setInput={setInput}
-          onSendMessage={handleSendMessage}
-          toggleSidebar={toggleSidebar}
-          isConnected={connected}
+    <div
+      className={cn(
+        "w-full h-screen",
+        "bg-background text-foreground",
+        "overflow-hidden",
+      )}
+    >
+      <div className="relative flex h-full">
+        {/* Sidebar with backdrop for mobile */}
+        <div
+          className={cn(
+            "absolute inset-0 bg-background/80 backdrop-blur-sm z-40",
+            "lg:hidden",
+            isSidebarOpen ? "block" : "hidden",
+          )}
+          onClick={() => setIsSidebarOpen(false)}
         />
-        <div ref={messagesEndRef} />
+
+        {/* Sidebar */}
+        <div
+          className={cn(
+            "absolute z-50 h-full w-72",
+            "lg:relative lg:block",
+            "transition-transform duration-300 ease-in-out",
+            "bg-background border-r",
+            isSidebarOpen
+              ? "translate-x-0"
+              : "-translate-x-full lg:translate-x-0",
+          )}
+        >
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+          />
+        </div>
+        <div className="flex-1 flex flex-col h-full overflow-hidden">
+          <ChatArea
+            messages={displayMessages}
+            setMessages={setDisplayMessages}
+            input={input}
+            setInput={setInput}
+            onSendMessage={handleSendMessage}
+            toggleSidebar={() => setIsSidebarOpen(true)}
+            isConnected={connected}
+          />
+          <div ref={messagesEndRef} />
+        </div>
       </div>
     </div>
   );

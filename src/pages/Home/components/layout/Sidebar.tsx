@@ -1,7 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "./sidebar.css";
-import NavItem from "./NavItem";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -16,58 +22,49 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  const navItems = [
+    { path: "/expert", name: "전문가 찾기" },
+    { path: "/qa", name: "질문답변" },
+    { path: "/posts", name: "포스트" },
+    { path: "/pricing", name: "비용안내" },
+    { path: "/expert-signup", name: "전문가 가입안내" },
+    { path: "/chatting", name: "챗봇" },
+  ];
+
   return (
-    <>
-      <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
-        <div className={styles.sidebarHeader}>
-          <span className={styles.sidebarLogo}>LAWBOT</span>
-          <button className={styles.sidebarCloseButton} onClick={onClose}>
-            ×
-          </button>
-        </div>
-        <div className={styles.sidebarContent}>
-          <div className={styles.sidebarWelcome}>
-            반갑습니다. 로그인해주세요
-          </div>
-          <div
-            className={styles.sidebarLoginButton}
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent side="left" className="w-[300px] sm:hidden p-0">
+        <SheetHeader className="p-6 border-b">
+          <SheetTitle className="text-2xl font-bold">LAWBOT</SheetTitle>
+        </SheetHeader>
+
+        <div className="flex flex-col p-6">
+          <div className="mb-5 font-medium">반갑습니다. 로그인해주세요</div>
+
+          <Button
+            className="mb-6 w-full"
             onClick={() => handleNavigation("/signin")}
           >
             로그인/회원가입
-          </div>
-          <nav>
-            <NavItem
-              onClick={() => handleNavigation("/expert")}
-              ItemName="전문가 찾기"
-            />
-            <NavItem
-              onClick={() => handleNavigation("/qa")}
-              ItemName="질문답변"
-            />
-            <NavItem
-              onClick={() => handleNavigation("/posts")}
-              ItemName="포스트"
-            />
-            <NavItem
-              onClick={() => handleNavigation("/pricing")}
-              ItemName="비용안내"
-            />
-            <NavItem
-              onClick={() => handleNavigation("/expert-signup")}
-              ItemName="전문가 가입안내"
-            />
-            <NavItem
-              onClick={() => handleNavigation("/chatting")}
-              ItemName="챗봇"
-            />
-          </nav>
+          </Button>
+
+          <ScrollArea className="flex-1">
+            <div className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <Button
+                  key={item.path}
+                  variant="ghost"
+                  className="w-full justify-start font-medium"
+                  onClick={() => handleNavigation(item.path)}
+                >
+                  {item.name}
+                </Button>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
-      </div>
-      <div
-        className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ""}`}
-        onClick={onClose}
-      ></div>
-    </>
+      </SheetContent>
+    </Sheet>
   );
 };
 
