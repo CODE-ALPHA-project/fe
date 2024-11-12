@@ -84,17 +84,12 @@
 
 // export default Sidebar;
 import React, { useEffect } from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@ui/sheet";
 import { MessageSquare, Settings, LogOut, Plus, History } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
+import { Button } from "@ui/button";
+import { ScrollArea } from "@ui/scroll-area";
+import { Avatar, AvatarImage, AvatarFallback } from "@ui/avatar";
+import { cn } from "@lib/utils";
 import img1 from "../../../assets/img1.webp";
 
 interface SidebarProps {

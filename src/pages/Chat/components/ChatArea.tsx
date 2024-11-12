@@ -223,8 +223,8 @@
 
 // export default ChatArea;
 import React, { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { cn } from "@lib/utils";
+import { Alert, AlertDescription } from "@ui/alert";
 import { AlertCircle } from "lucide-react";
 import ChatHeader from "../layout/ChatHeader";
 import ChatMessages from "./ChatMessage";

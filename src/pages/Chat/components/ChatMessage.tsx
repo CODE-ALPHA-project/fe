@@ -66,11 +66,11 @@
 
 // export default ChatMessage;
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 import ReactMarkdown from "react-markdown";
 import useTypingEffect from "../../../hooks/useTypingEffect";
 import { MessageRequestProps } from "../types/type";
-import { Card } from "@/components/ui/card";
+import { Card } from "@ui/card";
 
 interface ChatMessageProps {
   messages: MessageRequestProps[];

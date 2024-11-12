@@ -3,7 +3,7 @@ import { useChat } from "../../hooks/useChat";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
 import { MessageRequestProps, MessageResponseProps } from "./types/type";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 const ChatPage: React.FC = () => {
   // State management

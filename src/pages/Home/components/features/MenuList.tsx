@@ -74,7 +74,7 @@
 // export default MenuList;
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@ui/card";
 import { Search, MessageSquare, Bell } from "lucide-react";
 
 interface MenuCardProps {

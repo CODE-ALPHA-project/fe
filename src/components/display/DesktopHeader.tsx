@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Bell } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@ui/button";
+import { cn } from "@lib/utils";
 import SearchBar from "@/pages/Home/components/layout/SearchBar";
 
 const DesktopHeader: React.FC = () => {

@@ -1,9 +1,9 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent } from "@ui/card";
+import { Badge } from "@ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "@ui/avatar";
 import { Clock } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 interface ExpertProps {
   name: string;

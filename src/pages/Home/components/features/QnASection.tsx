@@ -2,11 +2,11 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 import { qnaItems } from "../../../../mock/qna";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@ui/button";
+import { Card, CardHeader, CardContent } from "@ui/card";
+import { Badge } from "@ui/badge";
 import { ChevronRight, PenSquare } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@ui/avatar";
 
 const QnASection: React.FC = () => {
   const navigate = useNavigate();

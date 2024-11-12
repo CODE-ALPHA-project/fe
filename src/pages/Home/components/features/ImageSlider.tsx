@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSlide } from "../../../../hooks/useSlide";
 import { getWebPPath } from "../../../../utils/getWebp";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "@ui/card";
+import { Button } from "@ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 interface SlideProps {
   key: string;

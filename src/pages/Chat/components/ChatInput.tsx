@@ -129,9 +129,9 @@
 // export default ChatInput;
 import React, { useRef, useState } from "react";
 import { Paperclip, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+import { Button } from "@ui/button";
+import { Textarea } from "@ui/textarea";
+import { cn } from "@lib/utils";
 import UploadModal from "./UploadModal";
 
 interface ChatInputProps {

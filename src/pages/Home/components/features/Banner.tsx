@@ -3,7 +3,7 @@ import { Rocket } from "lucide-react";
 import ImageSlider from "./ImageSlider";
 import { slides } from "../../../../mock/Slide";
 import { getRequest } from "../../api/api";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 const Banner: React.FC = () => {
   return (

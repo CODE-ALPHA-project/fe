@@ -1,5 +1,5 @@
 import { getRandomExperts } from "../../../../utils/getRandomExpert";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@ui/card";
 import { ExpertCard } from "./ExpertCard";
 import { Star } from "lucide-react";
 
