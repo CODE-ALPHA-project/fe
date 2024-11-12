@@ -1,21 +1,28 @@
-import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../display/Header";
 import Footer from "../display/Footer";
-import { defaultLayout } from "./Layout.css";
 
 const RootLayout = () => {
   const location = useLocation();
 
-  const hideHeaderFooter = location.pathname === "/chatting";
+  const hideHeaderFooterPaths = [
+    "/chatting",
+    "/login",
+    "/signup",
+    "/expert-login",
+  ];
+
+  const shouldHideHeaderFooter = hideHeaderFooterPaths.some((path) =>
+    location.pathname.startsWith(path),
+  );
 
   return (
     <>
-      {!hideHeaderFooter && <Header />}
-      <main role="main" className={defaultLayout}>
+      {!shouldHideHeaderFooter && <Header />}
+      <main role="main">
         <Outlet />
       </main>
-      {!hideHeaderFooter && <Footer />}
+      {!shouldHideHeaderFooter && <Footer />}
     </>
   );
 };

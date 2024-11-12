@@ -1,18 +1,25 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), vanillaExtractPlugin()],
+  plugins: [react()],
   /**proxy configuration for communicating with spring */
   server: {
-    host:true,
+    host: true,
     open: "/",
     proxy: {
-        "/api/v1": {
-            target: "http://13.209.21.155", // spring be url
-            changeOrigin: true,
-        },
+      "/api/v1": {
+        target: "https://13.209.21.155.nip.io", // spring be url
+        changeOrigin: true,
+      },
+    },
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@lib": path.resolve(__dirname, "./src/lib"),
+      "@ui": path.resolve(__dirname, "./src/components/ui"),
     },
   },
   // define:{

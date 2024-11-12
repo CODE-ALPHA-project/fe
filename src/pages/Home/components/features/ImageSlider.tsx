@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import * as styles from "./imageslider.css";
 import { useSlide } from "../../../../hooks/useSlide";
 import { getWebPPath } from "../../../../utils/getWebp";
+import { Card } from "@ui/card";
+import { Button } from "@ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@lib/utils";
 
 interface SlideProps {
   key: string;
@@ -54,48 +57,76 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
   }, [nextSlide, isButtonDisabled]);
 
   return (
-    <div className={styles.sliderContainer}>
+    <Card className="relative w-full overflow-hidden rounded-xl aspect-[4/3] sm:aspect-video">
       <div
-        className={styles.slider}
+        className={cn(
+          "absolute top-0 left-0 w-full h-full flex",
+          "transition-transform duration-500 ease-in-out",
+          !isTransitioning && "transition-none",
+        )}
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
-          transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
         }}
       >
         {extendedSlides.map((slideItem) => (
-          <div key={slideItem.key} className={styles.slide}>
-            <picture>
+          <div key={slideItem.key} className="flex-shrink-0 w-full h-full">
+            <picture className="w-full h-full">
               <source srcSet={getWebPPath(slideItem.image)} type="image/webp" />
               <source srcSet={slideItem.image} type="image/png" />
               <img
                 src={slideItem.image}
                 alt={`Slide ${slideItem.key}`}
-                className={styles.slideImage}
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
             </picture>
           </div>
         ))}
       </div>
-      <div className={styles.sliderControls}>
-        <button
-          className={styles.prevButton}
+      <div className="absolute inset-0 flex items-center justify-between p-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          className={cn(
+            "h-9 w-9 rounded-full",
+            "bg-black/20 hover:bg-black/40",
+            "text-white border-none",
+            "transition-all duration-200",
+            "backdrop-blur-sm",
+          )}
           onClick={handlePrevClick}
           disabled={isButtonDisabled}
         >
-          &lt;
-        </button>
-        <span className={styles.slideCounter}>
-          {`${getSlideIndex()} / ${totalSlides}`}
-        </span>
-        <button
-          className={styles.nextButton}
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className={cn(
+            "h-9 w-9 rounded-full",
+            "bg-black/20 hover:bg-black/40",
+            "text-white border-none",
+            "transition-all duration-200",
+            "backdrop-blur-sm",
+          )}
           onClick={handleNextClick}
           disabled={isButtonDisabled}
         >
-          &gt;
-        </button>
+          <ChevronRight className="h-6 w-6" />
+        </Button>
       </div>
-    </div>
+      <div className="absolute bottom-4 right-4">
+        <div
+          className={cn(
+            "px-3 py-1 rounded-full",
+            "bg-black/20 backdrop-blur-sm",
+            "text-white text-sm font-medium",
+          )}
+        >
+          {getSlideIndex()} / {totalSlides}
+        </div>
+      </div>
+    </Card>
   );
 };
 
