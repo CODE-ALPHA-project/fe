@@ -6,13 +6,13 @@ export default defineConfig({
   plugins: [react(), vanillaExtractPlugin()],
   /**proxy configuration for communicating with spring */
   server: {
-    host:true,
+    host: true,
     open: "/",
     proxy: {
-        "/api/v1": {
-            target: "http://13.209.21.155", // spring be url
-            changeOrigin: true,
-        },
+      "/api/v1": {
+        target: "https://13.209.21.155.nip.io", // spring be url
+        changeOrigin: true,
+      },
     },
   },
   // define:{
