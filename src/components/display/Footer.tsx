@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="w-full bg-gray-50 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-100/50" />
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="space-y-4">
             <h3 className="font-bold text-lg">법률 상담 서비스</h3>
             <div className="space-y-2 text-sm text-muted-foreground">

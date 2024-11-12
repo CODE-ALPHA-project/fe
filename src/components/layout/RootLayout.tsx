@@ -6,15 +6,24 @@ import { defaultLayout } from "./Layout.css";
 const RootLayout = () => {
   const location = useLocation();
 
-  const hideHeaderFooter = location.pathname === "/chatting";
+  const hideHeaderFooterPaths = [
+    "/chatting",
+    "/login",
+    "/signup",
+    "/expert-login",
+  ];
+
+  const shouldHideHeaderFooter = hideHeaderFooterPaths.some((path) =>
+    location.pathname.startsWith(path),
+  );
 
   return (
     <>
-      {!hideHeaderFooter && <Header />}
+      {!shouldHideHeaderFooter && <Header />}
       <main role="main" className={defaultLayout}>
         <Outlet />
       </main>
-      {!hideHeaderFooter && <Footer />}
+      {!shouldHideHeaderFooter && <Footer />}
     </>
   );
 };
