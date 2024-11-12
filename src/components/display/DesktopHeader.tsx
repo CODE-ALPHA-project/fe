@@ -50,7 +50,7 @@ const DesktopHeader: React.FC = () => {
 
             <Button
               variant="outline"
-              onClick={() => navigate("/signin")}
+              onClick={() => navigate("/login")}
               className={cn(
                 "bg-background hover:bg-secondary/50",
                 "border border-border/50",

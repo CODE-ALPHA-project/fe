@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <Button
             className="mb-6 w-full"
-            onClick={() => handleNavigation("/signin")}
+            onClick={() => handleNavigation("/login")}
           >
             로그인/회원가입
           </Button>
