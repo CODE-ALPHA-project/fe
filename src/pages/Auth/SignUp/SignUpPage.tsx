@@ -30,9 +30,7 @@ const SignupPage = () => {
       </Link>
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardDescription className="text-center">
-            회원가입하고 여러분의 권리를 되찾아보세요
-          </CardDescription>
+          <CardDescription className="text-center">환영합니다</CardDescription>
         </CardHeader>
         <CardContent>
           <form>

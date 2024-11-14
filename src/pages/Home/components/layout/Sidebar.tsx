@@ -21,8 +21,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { path: "/expert", name: "전문가 찾기" },
     { path: "/qa", name: "질문답변" },
     { path: "/posts", name: "포스트" },
-    { path: "/pricing", name: "비용안내" },
-    { path: "/expert-signup", name: "전문가 가입안내" },
+    { path: "/payment", name: "비용안내" },
+    { path: "/expert-signin", name: "전문가 가입안내" },
     { path: "/chatting", name: "챗봇" },
   ];
 
