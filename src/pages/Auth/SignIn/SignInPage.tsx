@@ -27,9 +27,7 @@ const LoginPage = () => {
       </Link>
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardDescription className="text-center">
-            여러분의 권리를 되찾아보세요
-          </CardDescription>
+          <CardDescription className="text-center">반갑습니다</CardDescription>
         </CardHeader>
         <CardContent>
           <form>
