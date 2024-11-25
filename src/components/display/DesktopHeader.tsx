@@ -1,19 +1,29 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Bell } from "lucide-react";
 import { Button } from "@ui/button";
 import { cn } from "@lib/utils";
 import SearchBar from "@/pages/Home/components/layout/SearchBar";
+import { ModeToggle } from "@/components/mode-toggle";
+import { useFlow } from "@/stackflow";
+
+// 활동 타입을 명시적으로 정의
+type ActivityName =
+  | "Home"
+  | "LoginPage"
+  | "SignupPage"
+  | "ChatPage"
+  | "ExpertSigninPage"
+  | "ExpertPage"
+  | "QnAPage"
+  | "PaymentPage";
 
 const DesktopHeader: React.FC = () => {
-  const navigate = useNavigate();
-
-  const navigationItems = [
-    { label: "전문가찾기", path: "/expert" },
-    { label: "질문답변", path: "/qa" },
-    { label: "포스트", path: "/posts" },
-    { label: "비용안내", path: "/payment" },
-    { label: "채팅하기", path: "/chatting" },
+  const { push } = useFlow();
+  const navigationItems: Array<{ label: string; path: ActivityName }> = [
+    { label: "전문가찾기", path: "ExpertPage" },
+    { label: "질문답변", path: "QnAPage" },
+    { label: "포스트", path: "PaymentPage" },
+    { label: "비용안내", path: "PaymentPage" },
+    { label: "채팅하기", path: "ChatPage" },
   ];
 
   return (
@@ -22,7 +32,7 @@ const DesktopHeader: React.FC = () => {
         <div className="h-16 flex items-center justify-between gap-8">
           <h1
             className="text-2xl font-bold cursor-pointer bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent"
-            onClick={() => navigate("/")}
+            onClick={() => push("Home", {}, { animate: true })}
           >
             LAWBOT
           </h1>
@@ -30,26 +40,13 @@ const DesktopHeader: React.FC = () => {
           <SearchBar />
 
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                "relative h-10 w-10",
-                "bg-secondary/30 hover:bg-secondary/50",
-                "rounded-xl transition-all duration-300",
-              )}
-            >
-              <div className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500">
-                <span className="absolute inset-0 animate-ping rounded-full bg-red-500 opacity-75" />
-              </div>
-              <Bell className="h-5 w-5" />
-            </Button>
+            <ModeToggle />
 
             <div className="h-6 w-px bg-border/60" />
 
             <Button
               variant="outline"
-              onClick={() => navigate("/login")}
+              onClick={() => push("LoginPage", {}, { animate: true })}
               className={cn(
                 "bg-background hover:bg-secondary/50",
                 "border border-border/50",
@@ -64,7 +61,7 @@ const DesktopHeader: React.FC = () => {
 
             <Button
               variant="default"
-              onClick={() => navigate("/expert-signin")}
+              onClick={() => push("ExpertSigninPage", {}, { animate: true })}
               className={cn(
                 "bg-gradient-to-r from-primary to-primary/90",
                 "hover:from-primary/90 hover:to-primary",
@@ -86,7 +83,7 @@ const DesktopHeader: React.FC = () => {
             <Button
               key={item.path}
               variant="ghost"
-              onClick={() => navigate(item.path)}
+              onClick={() => push(item.path, {}, { animate: true })}
               className={cn(
                 "px-5 h-12 rounded-none text-sm font-medium",
                 "hover:bg-transparent relative group",

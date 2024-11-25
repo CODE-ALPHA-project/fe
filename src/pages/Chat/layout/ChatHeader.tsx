@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Menu, Home } from "lucide-react";
 import { Button } from "@ui/button";
 import { cn } from "@lib/utils";
@@ -9,6 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
+import { useFlow } from "@/stackflow";
 
 interface ChatHeaderProps {
   toggleSidebar: () => void;
@@ -19,7 +19,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   toggleSidebar,
   isConnected,
 }) => {
-  const navigate = useNavigate();
+  const { push } = useFlow();
 
   return (
     <header
@@ -48,7 +48,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             "bg-clip-text text-transparent",
             "cursor-pointer",
           )}
-          onClick={() => navigate("/")}
+          onClick={() => push("Home", {}, { animate: true })}
         >
           LAWBOT
         </h1>
@@ -95,7 +95,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => navigate("/")}
+          onClick={() => push("Home", {}, { animate: true })}
           className={cn("h-9 w-9", "hover:bg-secondary/80", "rounded-lg")}
         >
           <Home className="h-5 w-5" />

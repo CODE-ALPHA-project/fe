@@ -72,8 +72,10 @@ export const useChat = ({ serverUrl, topic, chatRoomId }: UseChatProps) => {
     (message: string) => {
       if (stompClientRef.current && stompClientRef.current.connected) {
         const requestPayload = {
+          userId: 1,
           message,
           chatRoomId,
+          sentType: "AI",
         };
         stompClientRef.current.send(
           "/app/send",

@@ -1,29 +1,45 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@ui/sheet";
 import { Button } from "@ui/button";
 import { ScrollArea } from "@ui/scroll-area";
+import { useFlow } from "@/stackflow";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const navigate = useNavigate();
+// Activity 타입 정의
+type ActivityName =
+  | "Home"
+  | "LoginPage"
+  | "SignupPage"
+  | "ChatPage"
+  | "ExpertSigninPage"
+  | "ExpertPage"
+  | "QnAPage"
+  | "PaymentPage";
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
+interface NavItem {
+  path: ActivityName;
+  name: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const { push } = useFlow();
+
+  const handleNavigation = (path: ActivityName) => {
+    push(path, {}, { animate: true });
     onClose();
   };
 
-  const navItems = [
-    { path: "/expert", name: "전문가 찾기" },
-    { path: "/qa", name: "질문답변" },
-    { path: "/posts", name: "포스트" },
-    { path: "/payment", name: "비용안내" },
-    { path: "/expert-signin", name: "전문가 가입안내" },
-    { path: "/chatting", name: "챗봇" },
+  const navItems: NavItem[] = [
+    { path: "ExpertPage", name: "전문가 찾기" },
+    { path: "QnAPage", name: "질문답변" },
+    { path: "PaymentPage", name: "포스트" },
+    { path: "PaymentPage", name: "비용안내" },
+    { path: "ExpertSigninPage", name: "전문가 가입안내" },
+    { path: "ChatPage", name: "챗봇" },
   ];
 
   return (
@@ -38,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <Button
             className="mb-6 w-full"
-            onClick={() => handleNavigation("/login")}
+            onClick={() => handleNavigation("LoginPage")}
           >
             로그인/회원가입
           </Button>

@@ -1,5 +1,7 @@
+import { ActivityComponentType } from "@stackflow/react";
 import PaymentCard from "./PaymentCard";
 import { PaymentPlanProps } from "./types/types";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 const basicPlan: PaymentPlanProps = {
   type: "Basic",
@@ -43,16 +45,18 @@ const premiumPlan: PaymentPlanProps = {
   ],
 };
 
-const PaymentPage = () => {
+const PaymentPage: ActivityComponentType = () => {
   return (
-    <div className="container mx-auto min-h-[calc(100vh-200px)]">
-      <div className="flex flex-col items-center justify-center py-10 md:py-20 px-4">
-        <div className="flex flex-col md:flex-row gap-6 items-center justify-center w-full max-w-[1200px]">
-          <PaymentCard {...basicPlan} className="w-full md:w-1/2" />
-          <PaymentCard {...premiumPlan} className="w-full md:w-1/2" />
+    <AppScreen appBar={{ title: "Payment" }}>
+      <div className="container mx-auto min-h-[calc(100vh-200px)]">
+        <div className="flex flex-col items-center justify-center py-10 md:py-20 px-4">
+          <div className="flex flex-col md:flex-row gap-6 items-center justify-center w-full max-w-[1200px]">
+            <PaymentCard {...basicPlan} className="w-full md:w-1/2" />
+            <PaymentCard {...premiumPlan} className="w-full md:w-1/2" />
+          </div>
         </div>
       </div>
-    </div>
+    </AppScreen>
   );
 };
 export default PaymentPage;

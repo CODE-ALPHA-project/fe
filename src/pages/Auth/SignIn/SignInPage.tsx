@@ -1,3 +1,4 @@
+import { useFlow } from "@/stackflow";
 import { useState } from "react";
 import {
   Card,
@@ -11,69 +12,79 @@ import { Label } from "@ui/label";
 import { Button } from "@ui/button";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ActivityComponentType } from "@stackflow/react";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 
-const LoginPage = () => {
+const LoginPage: ActivityComponentType = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { push } = useFlow();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br p-4">
-      <Link
-        className="w-full max-w-md mb-4 text-black text-center py-2 text-5xl font-bold"
-        to={"/"}
-      >
-        LAWBOT
-      </Link>
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardDescription className="text-center">반갑습니다</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <div className="relative">
+    <AppScreen appBar={{ title: "Login" }}>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br p-4">
+        <Link
+          className="w-full max-w-md mb-4 text-center py-2 text-5xl font-bold"
+          to={"/"}
+        >
+          LAWBOT
+        </Link>
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardDescription className="text-center">
+              반갑습니다
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
                   <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
                     required
                   />
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                  >
-                    {showPassword ? (
-                      <EyeOffIcon className="h-4 w-4 text-gray-500" />
-                    ) : (
-                      <EyeIcon className="h-4 w-4 text-gray-500" />
-                    )}
-                  </button>
                 </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                    >
+                      {showPassword ? (
+                        <EyeOffIcon className="h-4 w-4 text-gray-500" />
+                      ) : (
+                        <EyeIcon className="h-4 w-4 text-gray-500" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                <Button className="w-full">로그인</Button>
               </div>
-              <Button className="w-full">로그인</Button>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex justify-center">
-          <p className="text-sm text-gray-500">아직 회원이 아니신가요?</p>
-          <Link className="px-1 text-blue-950 underline" to={"/signup"}>
-            회원가입
-          </Link>
-        </CardFooter>
-      </Card>
-    </div>
+            </form>
+          </CardContent>
+          <CardFooter className="flex justify-center">
+            <p className="text-sm text-gray-500">아직 회원이 아니신가요?</p>
+            <p
+              className="px-1 text-blue-950 underline"
+              onClick={() => push("SignupPage", {})}
+            >
+              회원가입
+            </p>
+          </CardFooter>
+        </Card>
+      </div>
+    </AppScreen>
   );
 };
 

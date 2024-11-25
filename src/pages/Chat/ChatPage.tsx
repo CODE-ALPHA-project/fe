@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChat } from "../../hooks/useChat";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
 import { MessageRequestProps, MessageResponseProps } from "./types/type";
 import { cn } from "@lib/utils";
+import { ActivityComponentType } from "@stackflow/react";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 
-const ChatPage: React.FC = () => {
+const ChatPage: ActivityComponentType = () => {
   // State management
   const [input, setInput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,12 +24,11 @@ const ChatPage: React.FC = () => {
     connected,
     messages: chatMessages,
   } = useChat({
-    serverUrl: "http://192.168.174.133:8080/ws",
+    serverUrl: "https://nomu.lisoft.kr/ws",
     topic: "/topic/messages",
     chatRoomId: "12345",
   });
 
-  // Update messages when new ones arrive
   useEffect(() => {
     if (chatMessages.length > 0) {
       const latestMessage = chatMessages[chatMessages.length - 1];
@@ -56,41 +57,42 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div
-      className={cn(
-        "w-full h-screen",
-        "bg-background text-foreground",
-        "overflow-hidden",
-      )}
-    >
-      <div className="relative flex h-full">
-        {/* Sidebar with backdrop for mobile */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-background/80 backdrop-blur-sm z-40",
-            "lg:hidden",
-            isSidebarOpen ? "block" : "hidden",
-          )}
-          onClick={() => setIsSidebarOpen(false)}
-        />
-        <Sidebar
-          isOpen={isSidebarOpen}
-          onClose={() => setIsSidebarOpen(false)}
-        />
+    <AppScreen appBar={{ title: "Chatting" }}>
+      <div
+        className={cn(
+          "w-full h-screen",
+          "bg-background text-foreground",
+          "overflow-hidden",
+        )}
+      >
+        <div className="relative flex h-full">
+          <div
+            className={cn(
+              "absolute inset-0 bg-background/80 backdrop-blur-sm z-40",
+              "lg:hidden",
+              isSidebarOpen ? "block" : "hidden",
+            )}
+            onClick={() => setIsSidebarOpen(false)}
+          />
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+          />
+        </div>
+        <div className="flex-1 flex flex-col h-full overflow-hidden">
+          <ChatArea
+            messages={displayMessages}
+            setMessages={setDisplayMessages}
+            input={input}
+            setInput={setInput}
+            onSendMessage={handleSendMessage}
+            toggleSidebar={() => setIsSidebarOpen(true)}
+            isConnected={connected}
+          />
+          <div ref={messagesEndRef} />
+        </div>
       </div>
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
-        <ChatArea
-          messages={displayMessages}
-          setMessages={setDisplayMessages}
-          input={input}
-          setInput={setInput}
-          onSendMessage={handleSendMessage}
-          toggleSidebar={() => setIsSidebarOpen(true)}
-          isConnected={connected}
-        />
-        <div ref={messagesEndRef} />
-      </div>
-    </div>
+    </AppScreen>
   );
 };
 
