@@ -73,36 +73,22 @@ const ChatPage: React.FC = () => {
           )}
           onClick={() => setIsSidebarOpen(false)}
         />
-
-        {/* Sidebar */}
-        <div
-          className={cn(
-            "absolute z-50 h-full w-72",
-            "lg:relative lg:block",
-            "transition-transform duration-300 ease-in-out",
-            "bg-background border-r",
-            isSidebarOpen
-              ? "translate-x-0"
-              : "-translate-x-full lg:translate-x-0",
-          )}
-        >
-          <Sidebar
-            isOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
-          />
-        </div>
-        <div className="flex-1 flex flex-col h-full overflow-hidden">
-          <ChatArea
-            messages={displayMessages}
-            setMessages={setDisplayMessages}
-            input={input}
-            setInput={setInput}
-            onSendMessage={handleSendMessage}
-            toggleSidebar={() => setIsSidebarOpen(true)}
-            isConnected={connected}
-          />
-          <div ref={messagesEndRef} />
-        </div>
+        <Sidebar
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
+      </div>
+      <div className="flex-1 flex flex-col h-full overflow-hidden">
+        <ChatArea
+          messages={displayMessages}
+          setMessages={setDisplayMessages}
+          input={input}
+          setInput={setInput}
+          onSendMessage={handleSendMessage}
+          toggleSidebar={() => setIsSidebarOpen(true)}
+          isConnected={connected}
+        />
+        <div ref={messagesEndRef} />
       </div>
     </div>
   );
