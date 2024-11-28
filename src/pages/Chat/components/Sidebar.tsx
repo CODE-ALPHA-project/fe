@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@ui/sheet";
-import { MessageSquare, Settings, LogOut, Plus, History } from "lucide-react";
-import { Button } from "@ui/button";
-import { ScrollArea } from "@ui/scroll-area";
-import { Avatar, AvatarImage, AvatarFallback } from "@ui/avatar";
-import { cn } from "@lib/utils";
-import img1 from "../../../assets/img1.webp";
+import React, { useEffect } from 'react';
+
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@ui/sheet';
+import { MessageSquare, Settings, LogOut, Plus, History } from 'lucide-react';
+import { Button } from '@ui/button';
+import { ScrollArea } from '@ui/scroll-area';
+import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar';
+import { cn } from '@lib/utils';
+import img1 from '@assets/img1.webp';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -15,28 +16,28 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) {
+      if (event.key === 'Escape' && isOpen) {
         onClose();
       }
     };
 
-    window.addEventListener("keydown", handleEsc);
+    window.addEventListener('keydown', handleEsc);
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener('keydown', handleEsc);
     };
   }, [isOpen, onClose]);
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent side="left" className="w-[280px] p-0">
-        <SheetHeader className="p-4 border-b">
+        <SheetHeader className="border-b p-4">
           <SheetTitle className="flex items-center gap-2 text-lg">
             <History className="h-5 w-5" />
             Chatting History
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col h-full">
+        <div className="flex h-full flex-col">
           <div className="p-4">
             <Button
               variant="outline"
@@ -57,9 +58,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   key={i}
                   variant="ghost"
                   className={cn(
-                    "w-full justify-start gap-2",
-                    "text-sm font-medium",
-                    "hover:bg-secondary/80",
+                    'w-full justify-start gap-2',
+                    'text-sm font-medium',
+                    'hover:bg-secondary/80',
                   )}
                 >
                   <MessageSquare className="h-4 w-4" />
@@ -68,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               ))}
             </div>
           </ScrollArea>
-          <div className="border-t p-4 space-y-4">
+          <div className="space-y-4 border-t p-4">
             <Button
               variant="ghost"
               className="w-full justify-start gap-2"

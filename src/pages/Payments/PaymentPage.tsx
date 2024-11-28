@@ -1,6 +1,7 @@
 import { ActivityComponentType } from '@stackflow/react';
-import PaymentCard from './PaymentCard';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
+
+import PaymentCard from './PaymentCard';
 import BottomTab from '@/components/display/BottomTab';
 import { basicPlan, premiumPlan } from '@/pages/Payments/plan';
 

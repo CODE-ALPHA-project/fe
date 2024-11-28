@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { getWebPPath } from '../../../../utils/getWebp';
+import Autoplay from 'embla-carousel-autoplay';
+
+import { getWebPPath } from '@/utils/getWebp';
 import {
   Carousel,
   CarouselContent,
@@ -7,7 +9,6 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { ImageSliderProps } from '@/pages/Home/types/type';
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {

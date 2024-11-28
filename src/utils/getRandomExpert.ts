@@ -1,4 +1,4 @@
-import { experts } from "../mock/expert";
+import { experts } from '@mock/expert';
 
 export const getRandomExperts = (count: number) => {
   const shuffled = [...experts].sort(() => 0.5 - Math.random());

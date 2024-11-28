@@ -1,8 +1,9 @@
+import { AppScreen } from '@stackflow/plugin-basic-ui';
+import { ActivityComponentType } from '@stackflow/react';
+
 import BottomTab from '@/components/display/BottomTab';
 import FrequentQuestionSection from '@/pages/QnA/components/FrequentQuestionSection';
 import KeywordSection from '@/pages/QnA/components/KeywordSection';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
-import { ActivityComponentType } from '@stackflow/react';
 import SearchSection from '@/pages/QnA/components/SearchSection';
 import UserQuestionSection from '@/pages/QnA/components/UserQuestionSection';
 

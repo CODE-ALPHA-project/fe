@@ -1,12 +1,13 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { qnaItems } from '../../../../mock/qna';
+import { useFlow } from '@/stackflow';
+
+import { qnaItems } from '@/mock/qna';
 import { Button } from '@ui/button';
 import { Card, CardHeader, CardContent } from '@ui/card';
 import { Badge } from '@ui/badge';
 import { ChevronRight, PenSquare } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar';
-import { useFlow } from '@/stackflow';
 
 const QnASection: React.FC = () => {
   const { push } = useFlow();

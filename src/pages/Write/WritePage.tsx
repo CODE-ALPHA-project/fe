@@ -1,7 +1,8 @@
-import CategorySection from '@/pages/Write/components/CategorySection';
-import WriteSection from '@/pages/Write/components/WriteSection';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
+
+import CategorySection from '@/pages/Write/components/CategorySection';
+import WriteSection from '@/pages/Write/components/WriteSection';
 
 const WritePage: ActivityComponentType = () => {
   return (

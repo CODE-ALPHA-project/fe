@@ -1,19 +1,10 @@
 import React from 'react';
+
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@ui/sheet';
 import { Button } from '@ui/button';
 import { ScrollArea } from '@ui/scroll-area';
 import { useFlow } from '@/stackflow';
-import { ActivityName } from '@/pages/Home/types/type';
-
-interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-interface NavItem {
-  path: ActivityName;
-  name: string;
-}
+import { ActivityName, NavItem, SidebarProps } from '@/pages/Home/types/type';
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { push } = useFlow();

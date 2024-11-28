@@ -1,25 +1,25 @@
-import { getRandomExperts } from "../../../../utils/getRandomExpert";
-import { Card, CardContent } from "@ui/card";
-import { ExpertCard } from "./ExpertCard";
+import { getRandomExperts } from '@/utils/getRandomExpert';
+import { Card, CardContent } from '@ui/card';
+import { ExpertCard } from './ExpertCard';
 
 const RecommendExpert = () => {
   const randomExperts = getRandomExperts(3);
 
   return (
-    <div className="mx-4 sm:mx-8 lg:mx-12 py-8">
-      <div className="flex items-center gap-2 mb-6 px-2">
-        <h2 className="text-2xl font-eland tracking-tight">
+    <div className="mx-4 py-8 sm:mx-8 lg:mx-12">
+      <div className="mb-6 flex items-center gap-2 px-2">
+        <h2 className="font-eland text-2xl tracking-tight">
           오늘의 추천노무사
         </h2>
       </div>
 
-      <Card className="border-none shadow-none bg-transparent">
+      <Card className="border-none bg-transparent shadow-none">
         <CardContent className="p-0 sm:p-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {randomExperts.map((expert, index) => (
               <div
                 key={index}
-                className="transform transition-all duration-200 hover:-translate-y-1 hover:shadow-lg rounded-xl"
+                className="transform rounded-xl transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
                 <ExpertCard {...expert} />
               </div>

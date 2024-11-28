@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useChat } from '../../hooks/useChat';
+import { ActivityComponentType } from '@stackflow/react';
+import { AppScreen } from '@stackflow/plugin-basic-ui';
+
+import { useChat } from '@hooks/useChat';
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
 import { MessageRequestProps, MessageResponseProps } from './types/type';
 import { cn } from '@lib/utils';
-import { ActivityComponentType } from '@stackflow/react';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
 
 const ChatPage: ActivityComponentType = () => {
   // State management

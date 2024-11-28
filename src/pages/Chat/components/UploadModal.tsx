@@ -1,9 +1,9 @@
-import React from "react";
-import { FileText, Image, Mic } from "lucide-react";
-//import {X} from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@ui/dialog";
-import { Button } from "@ui/button";
-import { cn } from "@lib/utils";
+import React from 'react';
+
+import { FileText, Image, Mic } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@ui/dialog';
+import { Button } from '@ui/button';
+import { cn } from '@lib/utils';
 
 interface UploadModalProps {
   isVisible: boolean;
@@ -19,24 +19,24 @@ const UploadModal: React.FC<UploadModalProps> = ({
   const options = [
     {
       icon: <FileText className="h-6 w-6" />,
-      id: "file",
-      label: "파일",
-      color: "bg-blue-500",
-      hoverColor: "hover:bg-blue-600",
+      id: 'file',
+      label: '파일',
+      color: 'bg-blue-500',
+      hoverColor: 'hover:bg-blue-600',
     },
     {
       icon: <Image className="h-6 w-6" />,
-      id: "image",
-      label: "이미지",
-      color: "bg-green-500",
-      hoverColor: "hover:bg-green-600",
+      id: 'image',
+      label: '이미지',
+      color: 'bg-green-500',
+      hoverColor: 'hover:bg-green-600',
     },
     {
       icon: <Mic className="h-6 w-6" />,
-      id: "audio",
-      label: "음성",
-      color: "bg-purple-500",
-      hoverColor: "hover:bg-purple-600",
+      id: 'audio',
+      label: '음성',
+      color: 'bg-purple-500',
+      hoverColor: 'hover:bg-purple-600',
     },
   ];
 
@@ -47,17 +47,17 @@ const UploadModal: React.FC<UploadModalProps> = ({
           <DialogTitle>파일 업로드</DialogTitle>
         </DialogHeader>
         <div className="flex justify-around py-6">
-          {options.map((option) => (
+          {options.map(option => (
             <div key={option.id} className="flex flex-col items-center gap-3">
               <Button
                 variant="ghost"
                 size="lg"
                 className={cn(
-                  "h-16 w-16 rounded-full",
-                  "transition-all duration-200",
+                  'h-16 w-16 rounded-full',
+                  'transition-all duration-200',
                   option.color,
                   option.hoverColor,
-                  "group",
+                  'group',
                 )}
                 onClick={() => {
                   onOptionSelect(option.id);

@@ -33,3 +33,13 @@ export type ActivityName =
   | 'QnAPage'
   | 'PaymentPage'
   | 'PostPage';
+
+export interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface NavItem {
+  path: ActivityName;
+  name: string;
+}

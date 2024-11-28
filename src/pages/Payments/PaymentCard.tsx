@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { cn } from '@lib/utils';
 import { Button } from '@ui/button';
 import {
@@ -9,7 +11,6 @@ import {
   CardTitle,
 } from '@ui/card';
 import { PaymentPlanProps } from './types/types';
-import { useState } from 'react';
 
 const PaymentCard = ({
   className,
