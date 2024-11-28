@@ -32,12 +32,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="flex items-center gap-2 text-lg">
             <History className="h-5 w-5" />
-            History
+            Chatting History
           </SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col h-full">
-          {/* New Chat Button */}
           <div className="p-4">
             <Button
               variant="outline"
@@ -51,7 +50,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </Button>
           </div>
 
-          {/* Chat History */}
           <ScrollArea className="flex-1 px-2">
             <div className="space-y-1 p-2">
               {Array.from({ length: 1 }).map((_, i) => (
@@ -65,7 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   )}
                 >
                   <MessageSquare className="h-4 w-4" />
-                  Chat {i + 1}
+                  한국의 노동법에 대한 질문이..
                 </Button>
               ))}
             </div>

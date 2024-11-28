@@ -1,36 +1,42 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@ui/sheet";
-import { Button } from "@ui/button";
-import { ScrollArea } from "@ui/scroll-area";
+import React from 'react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@ui/sheet';
+import { Button } from '@ui/button';
+import { ScrollArea } from '@ui/scroll-area';
+import { useFlow } from '@/stackflow';
+import { ActivityName } from '@/pages/Home/types/type';
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const navigate = useNavigate();
+interface NavItem {
+  path: ActivityName;
+  name: string;
+}
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const { push } = useFlow();
+
+  const handleNavigation = (path: ActivityName) => {
+    push(path, {}, { animate: true });
     onClose();
   };
 
-  const navItems = [
-    { path: "/expert", name: "전문가 찾기" },
-    { path: "/qa", name: "질문답변" },
-    { path: "/posts", name: "포스트" },
-    { path: "/payment", name: "비용안내" },
-    { path: "/expert-signin", name: "전문가 가입안내" },
-    { path: "/chatting", name: "챗봇" },
+  const navItems: NavItem[] = [
+    { path: 'ExpertPage', name: '전문가 찾기' },
+    { path: 'QnAPage', name: '질문답변' },
+    { path: 'PaymentPage', name: '포스트' },
+    { path: 'PaymentPage', name: '비용안내' },
+    { path: 'ExpertSigninPage', name: '전문가 가입안내' },
+    { path: 'ChatPage', name: '챗봇' },
   ];
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="left" className="w-[300px] sm:hidden p-0">
-        <SheetHeader className="p-6 border-b">
-          <SheetTitle className="text-2xl font-bold">LAWBOT</SheetTitle>
+      <SheetContent side="left" className="w-[300px] p-0 sm:hidden">
+        <SheetHeader className="border-b p-6">
+          <SheetTitle className="text-2xl font-bold">SolveUs</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col p-6">
@@ -38,14 +44,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <Button
             className="mb-6 w-full"
-            onClick={() => handleNavigation("/login")}
+            onClick={() => handleNavigation('LoginPage')}
           >
             로그인/회원가입
           </Button>
 
           <ScrollArea className="flex-1">
             <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <Button
                   key={item.path}
                   variant="ghost"

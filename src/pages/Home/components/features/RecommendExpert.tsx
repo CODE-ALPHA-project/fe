@@ -1,7 +1,6 @@
 import { getRandomExperts } from "../../../../utils/getRandomExpert";
 import { Card, CardContent } from "@ui/card";
 import { ExpertCard } from "./ExpertCard";
-import { Star } from "lucide-react";
 
 const RecommendExpert = () => {
   const randomExperts = getRandomExperts(3);
@@ -9,8 +8,9 @@ const RecommendExpert = () => {
   return (
     <div className="mx-4 sm:mx-8 lg:mx-12 py-8">
       <div className="flex items-center gap-2 mb-6 px-2">
-        <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-        <h2 className="text-2xl font-bold tracking-tight">오늘의 추천노무사</h2>
+        <h2 className="text-2xl font-eland tracking-tight">
+          오늘의 추천노무사
+        </h2>
       </div>
 
       <Card className="border-none shadow-none bg-transparent">

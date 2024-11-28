@@ -1,18 +1,22 @@
-import { BrowserRouter } from "react-router-dom";
-import Router from "./Router";
+import { Stack } from "@/stackflow";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/components/theme-provider";
 
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { BrowserRouter } from "react-router-dom";
 
+// App.tsx
 const App = () => {
   const queryClient = new QueryClient();
+
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <QueryClientProvider client={queryClient}>
+          <Stack />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
+
 export default App;

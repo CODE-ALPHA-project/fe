@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { Card } from '@/components/ui/card';
 
 export interface PaymentFeature {
   title: string;
@@ -6,7 +6,7 @@ export interface PaymentFeature {
 }
 
 export interface PaymentPlanProps extends React.ComponentProps<typeof Card> {
-  type: "Basic" | "Premium";
+  type: 'Basic' | 'Premium';
   title: string;
   description: string;
   features: PaymentFeature[];

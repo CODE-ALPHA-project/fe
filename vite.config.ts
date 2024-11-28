@@ -10,7 +10,7 @@ export default defineConfig({
     open: "/",
     proxy: {
       "/api/v1": {
-        target: "https://13.209.21.155.nip.io",
+        target: "https://nomu.lisoft.kr",
         changeOrigin: true,
       },
     },
