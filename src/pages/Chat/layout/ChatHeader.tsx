@@ -43,20 +43,17 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
         <h1
           className={cn(
-            "text-lg font-semibold",
+            "text-lg font-eland",
             "bg-gradient-to-r from-foreground to-foreground/70",
             "bg-clip-text text-transparent",
             "cursor-pointer",
           )}
           onClick={() => push("Home", {}, { animate: true })}
         >
-          LAWBOT
+          SolveUs
         </h1>
       </div>
-
-      {/* Right Section */}
       <div className="flex items-center gap-2">
-        {/* Connection Status */}
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -91,14 +88,13 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           </Tooltip>
         </TooltipProvider>
 
-        {/* Home Button */}
         <Button
           variant="ghost"
-          size="icon"
+          size="lg"
           onClick={() => push("Home", {}, { animate: true })}
           className={cn("h-9 w-9", "hover:bg-secondary/80", "rounded-lg")}
         >
-          <Home className="h-5 w-5" />
+          <Home className="h-5 w-5" size={24} />
         </Button>
       </div>
     </header>

@@ -1,13 +1,15 @@
-import gorv from "../assets/gorv.webp";
+import pol1 from "../assets/pol1.webp";
+import pol2 from "../assets/pol2.webp";
+import pol3 from "../assets/pol3.webp";
 
 export const slides = [
   {
     key: "a",
-    image: gorv,
+    image: pol1,
   },
-  { key: "b", image: gorv },
+  { key: "b", image: pol2 },
   {
     key: "c",
-    image: gorv,
+    image: pol3,
   },
 ];

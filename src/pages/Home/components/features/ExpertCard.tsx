@@ -1,18 +1,10 @@
-import React from "react";
-import { Card, CardContent } from "@ui/card";
-import { Badge } from "@ui/badge";
-import { Avatar, AvatarImage, AvatarFallback } from "@ui/avatar";
-import { Clock } from "lucide-react";
-import { cn } from "@lib/utils";
-
-interface ExpertProps {
-  name: string;
-  image: string;
-  tags: string[];
-  company: string;
-  description: string;
-  time: string;
-}
+import React from 'react';
+import { Card, CardContent } from '@ui/card';
+import { Badge } from '@ui/badge';
+import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar';
+import { Clock } from 'lucide-react';
+import { cn } from '@lib/utils';
+import { ExpertProps } from '@/pages/Home/types/type';
 
 export const ExpertCard: React.FC<ExpertProps> = ({
   name,
@@ -23,13 +15,12 @@ export const ExpertCard: React.FC<ExpertProps> = ({
   time,
 }) => {
   return (
-    <Card className="group transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer overflow-hidden">
+    <Card className="group cursor-pointer overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
       <CardContent className="p-6">
         <div className="flex flex-col items-center space-y-6">
-          {/* Expert Image */}
           <div className="relative">
-            <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-background shadow-xl">
-              <Avatar className="w-full h-full">
+            <div className="h-32 w-32 overflow-hidden rounded-full shadow-xl ring-4 ring-background">
+              <Avatar className="h-full w-full">
                 <AvatarImage src={image} alt={name} className="object-cover" />
                 <AvatarFallback className="text-2xl">
                   {name.charAt(0)}
@@ -37,10 +28,7 @@ export const ExpertCard: React.FC<ExpertProps> = ({
               </Avatar>
             </div>
           </div>
-
-          {/* Expert Info */}
-          <div className="space-y-4 w-full text-center">
-            {/* Tags */}
+          <div className="w-full space-y-4 text-center">
             <div className="flex flex-wrap justify-center gap-2">
               {tags.map((tag, i) => (
                 <Badge key={i} variant="secondary" className="font-medium">
@@ -48,21 +36,15 @@ export const ExpertCard: React.FC<ExpertProps> = ({
                 </Badge>
               ))}
             </div>
-
-            {/* Name and Company */}
             <div>
-              <h3 className="text-xl font-bold mb-1">{name}</h3>
+              <h3 className="mb-1 text-xl font-bold">{name}</h3>
               <p className="text-sm text-muted-foreground">{company}</p>
             </div>
-
-            {/* Description */}
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               {description}
             </p>
-
-            {/* Time */}
-            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground bg-muted/50 py-2 px-3 rounded-lg">
-              <Clock className="w-4 h-4" />
+            <div className="flex items-center justify-center gap-2 rounded-lg bg-muted/50 px-3 py-2 text-sm text-muted-foreground">
+              <Clock className="h-4 w-4" />
               <span>상담가능시간: {time}</span>
             </div>
           </div>
@@ -80,8 +62,8 @@ export const ExpertCardsContainer: React.FC<{
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
-        "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+        'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3',
+        'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8',
         className,
       )}
     >

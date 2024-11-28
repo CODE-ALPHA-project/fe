@@ -1,7 +1,6 @@
-import axios from "axios";
+import axiosInstance from '@/apis/axiosInterceptor';
 
-export const getRequest = () => {
-  axios.get("/api/v1/test").then((response) => {
-    console.log(response.data);
-  });
+export const getRequest = async () => {
+  const response = await axiosInstance.get('/test/');
+  return response.data;
 };

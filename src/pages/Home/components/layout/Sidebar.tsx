@@ -1,24 +1,14 @@
-import React from "react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@ui/sheet";
-import { Button } from "@ui/button";
-import { ScrollArea } from "@ui/scroll-area";
-import { useFlow } from "@/stackflow";
+import React from 'react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@ui/sheet';
+import { Button } from '@ui/button';
+import { ScrollArea } from '@ui/scroll-area';
+import { useFlow } from '@/stackflow';
+import { ActivityName } from '@/pages/Home/types/type';
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-// Activity 타입 정의
-type ActivityName =
-  | "Home"
-  | "LoginPage"
-  | "SignupPage"
-  | "ChatPage"
-  | "ExpertSigninPage"
-  | "ExpertPage"
-  | "QnAPage"
-  | "PaymentPage";
 
 interface NavItem {
   path: ActivityName;
@@ -34,19 +24,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   };
 
   const navItems: NavItem[] = [
-    { path: "ExpertPage", name: "전문가 찾기" },
-    { path: "QnAPage", name: "질문답변" },
-    { path: "PaymentPage", name: "포스트" },
-    { path: "PaymentPage", name: "비용안내" },
-    { path: "ExpertSigninPage", name: "전문가 가입안내" },
-    { path: "ChatPage", name: "챗봇" },
+    { path: 'ExpertPage', name: '전문가 찾기' },
+    { path: 'QnAPage', name: '질문답변' },
+    { path: 'PaymentPage', name: '포스트' },
+    { path: 'PaymentPage', name: '비용안내' },
+    { path: 'ExpertSigninPage', name: '전문가 가입안내' },
+    { path: 'ChatPage', name: '챗봇' },
   ];
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="left" className="w-[300px] sm:hidden p-0">
-        <SheetHeader className="p-6 border-b">
-          <SheetTitle className="text-2xl font-bold">LAWBOT</SheetTitle>
+      <SheetContent side="left" className="w-[300px] p-0 sm:hidden">
+        <SheetHeader className="border-b p-6">
+          <SheetTitle className="text-2xl font-bold">SolveUs</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col p-6">
@@ -54,14 +44,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <Button
             className="mb-6 w-full"
-            onClick={() => handleNavigation("LoginPage")}
+            onClick={() => handleNavigation('LoginPage')}
           >
             로그인/회원가입
           </Button>
 
           <ScrollArea className="flex-1">
             <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <Button
                   key={item.path}
                   variant="ghost"

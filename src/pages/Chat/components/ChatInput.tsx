@@ -1,17 +1,10 @@
-import React, { useRef, useState } from "react";
-import { Paperclip, Send } from "lucide-react";
-import { Button } from "@ui/button";
-import { Textarea } from "@ui/textarea";
-import { cn } from "@lib/utils";
-import UploadModal from "./UploadModal";
-
-interface ChatInputProps {
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  onSendMessage: (text: string) => void;
-  onFileUpload: (file: File) => void;
-  isDisabled: boolean;
-}
+import React, { useRef, useState } from 'react';
+import { Paperclip, Send } from 'lucide-react';
+import { Button } from '@ui/button';
+import { Textarea } from '@ui/textarea';
+import { cn } from '@lib/utils';
+import UploadModal from './UploadModal';
+import { ChatInputProps } from '@/pages/Chat/types/type';
 
 const ChatInput: React.FC<ChatInputProps> = ({
   input,
@@ -28,7 +21,7 @@ const ChatInput: React.FC<ChatInputProps> = ({
     e.preventDefault();
     if (input.trim() && !isDisabled) {
       onSendMessage(input);
-      setInput("");
+      setInput('');
     }
   };
 
@@ -41,21 +34,21 @@ const ChatInput: React.FC<ChatInputProps> = ({
 
   const handleOptionSelect = (option: string) => {
     if (!isDisabled) {
-      if (option === "file" || option === "image") {
+      if (option === 'file' || option === 'image') {
         fileInputRef.current?.click();
-      } else if (option === "audio") {
-        console.log("음성 녹음");
+      } else if (option === 'audio') {
+        console.log('음성 녹음');
       }
       setIsUploadOptionsVisible(false);
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && e.ctrlKey) {
+    if (e.key === 'Enter' && e.ctrlKey) {
       e.preventDefault();
-      setInput((prev) => prev + "\n");
+      setInput(prev => prev + '\n');
       adjustTextareaCursor();
-    } else if (e.key === "Enter" && !e.shiftKey) {
+    } else if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
@@ -78,11 +71,11 @@ const ChatInput: React.FC<ChatInputProps> = ({
       <form
         onSubmit={handleSubmit}
         className={cn(
-          "flex items-center gap-2",
-          "p-1.5 rounded-full",
-          "bg-background border",
-          "transition-colors duration-200",
-          isDisabled && "opacity-60",
+          'flex items-center gap-2',
+          'rounded-full p-1.5',
+          'border bg-background',
+          'transition-colors duration-200',
+          isDisabled && 'opacity-60',
         )}
       >
         <Button
@@ -90,10 +83,10 @@ const ChatInput: React.FC<ChatInputProps> = ({
           variant="ghost"
           size="icon"
           className={cn(
-            "h-9 w-9 rounded-full",
-            "text-muted-foreground hover:text-foreground",
-            "shrink-0",
-            isDisabled && "cursor-not-allowed",
+            'h-9 w-9 rounded-full',
+            'text-muted-foreground hover:text-foreground',
+            'shrink-0',
+            isDisabled && 'cursor-not-allowed',
           )}
           onClick={() => !isDisabled && setIsUploadOptionsVisible(true)}
           disabled={isDisabled}
@@ -104,19 +97,19 @@ const ChatInput: React.FC<ChatInputProps> = ({
         <Textarea
           ref={textareaRef}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={isDisabled ? "연결 중..." : "메시지를 입력해주세요"}
+          placeholder={isDisabled ? '연결 중...' : '메시지를 입력해주세요'}
           disabled={isDisabled}
           rows={1}
           className={cn(
-            "min-h-[36px] max-h-[200px]",
-            "py-2 px-3 text-sm",
-            "resize-none overflow-hidden",
-            "bg-transparent border-0",
-            "focus-visible:ring-0 focus-visible:ring-offset-0",
-            "placeholder:text-muted-foreground",
-            isDisabled && "cursor-not-allowed",
+            'max-h-[200px] min-h-[36px]',
+            'px-3 py-2 text-sm',
+            'resize-none overflow-hidden',
+            'border-0 bg-transparent',
+            'focus-visible:ring-0 focus-visible:ring-offset-0',
+            'placeholder:text-muted-foreground',
+            isDisabled && 'cursor-not-allowed',
           )}
         />
 
@@ -125,14 +118,14 @@ const ChatInput: React.FC<ChatInputProps> = ({
           variant="ghost"
           size="icon"
           className={cn(
-            "h-9 w-9 rounded-full",
-            "text-primary hover:text-primary/90",
-            "shrink-0",
-            "transition-all duration-200",
+            'h-9 w-9 rounded-full',
+            'text-primary hover:text-primary/90',
+            'shrink-0',
+            'transition-all duration-200',
             input.trim() &&
               !isDisabled &&
-              "bg-primary text-primary-foreground hover:bg-primary/90",
-            isDisabled && "cursor-not-allowed",
+              'bg-primary text-primary-foreground hover:bg-primary/90',
+            isDisabled && 'cursor-not-allowed',
           )}
           disabled={isDisabled}
         >

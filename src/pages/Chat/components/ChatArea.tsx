@@ -1,23 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { cn } from "@lib/utils";
-import { Alert, AlertDescription } from "@ui/alert";
-import { AlertCircle } from "lucide-react";
-import ChatHeader from "../layout/ChatHeader";
-import ChatMessages from "./ChatMessage";
-import ChatInput from "./ChatInput";
-import { MessageRequestProps, MessageResponseProps } from "../types/type";
-
-interface ChatAreaProps {
-  messages: (MessageRequestProps | MessageResponseProps)[];
-  setMessages: React.Dispatch<
-    React.SetStateAction<(MessageRequestProps | MessageResponseProps)[]>
-  >;
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  onSendMessage: (text: string) => void;
-  toggleSidebar: () => void;
-  isConnected: boolean;
-}
+import React, { useEffect, useRef, useState } from 'react';
+import { cn } from '@lib/utils';
+import { Alert, AlertDescription } from '@ui/alert';
+import { AlertCircle } from 'lucide-react';
+import ChatHeader from '../layout/ChatHeader';
+import ChatMessages from './ChatMessage';
+import ChatInput from './ChatInput';
+import { ChatAreaProps } from '../types/type';
 
 const ChatArea: React.FC<ChatAreaProps> = ({
   messages,
@@ -37,7 +25,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
     return scrollHeight - scrollTop - clientHeight < 200;
   };
 
-  const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
+  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
     if (autoScroll && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior });
     }
@@ -48,7 +36,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   useEffect(() => {
     if (!containerRef.current) return;
     const observer = new MutationObserver(
-      () => autoScroll && scrollToBottom("auto"),
+      () => autoScroll && scrollToBottom('auto'),
     );
 
     observer.observe(containerRef.current, {
@@ -61,13 +49,13 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   }, [autoScroll]);
 
   useEffect(() => {
-    scrollToBottom("smooth");
+    scrollToBottom('smooth');
   }, [messages]);
 
   useEffect(() => {
     const container = containerRef.current;
-    container?.addEventListener("scroll", handleScroll);
-    return () => container?.removeEventListener("scroll", handleScroll);
+    container?.addEventListener('scroll', handleScroll);
+    return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleFileUpload = () => {
@@ -75,13 +63,13 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   };
 
   return (
-    <main className="flex flex-col h-screen w-full bg-background relative">
+    <main className="relative flex h-screen w-full flex-col bg-background">
       <ChatHeader toggleSidebar={toggleSidebar} isConnected={isConnected} />
 
-      <div className="flex-1 flex flex-col min-h-0">
+      <div className="flex min-h-0 flex-1 flex-col">
         {/* Connection Status Alert */}
         {!isConnected && (
-          <div className="max-w-3xl mx-auto w-full px-4 mt-4">
+          <div className="mx-auto mt-4 w-full max-w-3xl px-4">
             <Alert variant="destructive" className="bg-destructive/10">
               <AlertCircle className="h-4 w-4" />
               <AlertDescription>
@@ -95,15 +83,15 @@ const ChatArea: React.FC<ChatAreaProps> = ({
         <div
           ref={containerRef}
           className={cn(
-            "flex-1 overflow-y-auto",
-            "px-4 py-4 md:px-6",
-            "scroll-smooth",
-            "scrollbar-thin scrollbar-thumb-secondary scrollbar-track-secondary/20",
-            "scrollbar-thumb-rounded",
+            'flex-1 overflow-y-auto',
+            'px-4 py-4 md:px-6',
+            'scroll-smooth',
+            'scrollbar-thin scrollbar-thumb-secondary scrollbar-track-secondary/20',
+            'scrollbar-thumb-rounded',
           )}
-          style={{ height: "calc(100vh - 160px)" }}
+          style={{ height: 'calc(100vh - 160px)' }}
         >
-          <div className="max-w-3xl mx-auto w-full">
+          <div className="mx-auto w-full max-w-3xl">
             <ChatMessages messages={messages} />
             <div ref={messagesEndRef} className="h-px" />
           </div>
@@ -113,11 +101,11 @@ const ChatArea: React.FC<ChatAreaProps> = ({
       {/* Input Area */}
       <div
         className={cn(
-          "border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-          "p-4 md:p-6",
+          'border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60',
+          'p-4 md:p-6',
         )}
       >
-        <div className="max-w-3xl mx-auto">
+        <div className="mx-auto max-w-3xl">
           <ChatInput
             input={input}
             setInput={setInput}
