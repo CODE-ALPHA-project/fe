@@ -1,10 +1,12 @@
+import { AppScreen } from '@stackflow/plugin-basic-ui';
+import { ActivityComponentType } from '@stackflow/react';
+
 import BottomTab from '@/components/display/BottomTab';
 import FrequentQuestionSection from '@/pages/QnA/components/FrequentQuestionSection';
 import KeywordSection from '@/pages/QnA/components/KeywordSection';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
-import { ActivityComponentType } from '@stackflow/react';
 import SearchSection from '@/pages/QnA/components/SearchSection';
 import UserQuestionSection from '@/pages/QnA/components/UserQuestionSection';
+import WriteButton from '@/pages/QnA/components/WriteButton';
 
 const QnAPage: ActivityComponentType = () => {
   return (
@@ -15,6 +17,7 @@ const QnAPage: ActivityComponentType = () => {
           <KeywordSection />
           <FrequentQuestionSection />
           <UserQuestionSection />
+          <WriteButton />
           <BottomTab />
         </div>
       </div>
@@ -23,3 +26,7 @@ const QnAPage: ActivityComponentType = () => {
 };
 
 export default QnAPage;
+
+// <div className="relative h-10 w-10 justify-items-center rounded-full bg-gray-200">
+//           <Pencil className="mt-2" onClick={() => push('WritePage', {})} />
+//         </div>

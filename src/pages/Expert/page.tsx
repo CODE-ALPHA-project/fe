@@ -1,21 +1,24 @@
 import BottomTab from '@/components/display/BottomTab';
+import SelectFilter from '@/pages/Expert/components/SelectFilter';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
+import { experts } from '@/mock/expert';
+import { useState } from 'react';
+import ExpertSection from '@/pages/Expert/components/ExpertSection';
 
 const ExpertPage: ActivityComponentType = () => {
+  const [selectedFilter, setSelectedFilter] = useState('');
+
+  const filteredExperts = experts.filter(expert =>
+    selectedFilter ? expert.tags.includes(selectedFilter) : true,
+  );
+
   return (
-    <AppScreen appBar={{ title: 'Expert', height: '55px' }}>
+    <AppScreen appBar={{ title: '노무사목록', height: '55px' }}>
       <div className="fixed inset-0 overflow-auto">
         <div className="flex w-full flex-col px-3 py-3">
-          전체 노무사들은 누르면 Modal로 상세 정보
-          <section className="h-full w-full text-center">
-            <span className="text-xl font-bold">3명 카드형태</span>
-            <div className="border border-black">
-              노무사3명 Card 누르면 디테일 모달
-            </div>
-          </section>
-          <section className="text-2xl">지역별?</section>
-          <section className="text-2xl">??</section>
+          <SelectFilter value={selectedFilter} onChange={setSelectedFilter} />
+          <ExpertSection experts={filteredExperts} />
         </div>
         <BottomTab />
       </div>

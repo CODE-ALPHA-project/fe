@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useState } from 'react';
 
 const WriteSection = () => {
   const [content, setContent] = useState('');
@@ -17,7 +18,7 @@ const WriteSection = () => {
   return (
     <section className="py-4">
       <Textarea
-        className="h-[400px]"
+        className="h-[350px]"
         value={content}
         onChange={contentChangeHandler}
       />

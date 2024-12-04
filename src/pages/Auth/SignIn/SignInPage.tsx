@@ -14,12 +14,38 @@ import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from 'lucide-react';
 import { ActivityComponentType } from '@stackflow/react';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Link } from 'react-router-dom';
 
 const LoginPage: ActivityComponentType = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const { push } = useFlow();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsLoading(true);
+
+    if (email === 'ex1@gmail.com' && password === 'asd123') {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        localStorage.setItem('isLoggedIn', 'true');
+        push('Home', {});
+      } catch (err) {
+        setError('로그인 중 오류가 발생했습니다.');
+      }
+    } else {
+      setError('이메일 또는 비밀번호가 올바르지 않습니다.');
+    }
+
+    setIsLoading(false);
+  };
 
   return (
     <AppScreen appBar={{ title: '로그인', height: '55px' }}>
@@ -41,7 +67,12 @@ const LoginPage: ActivityComponentType = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="text-center text-sm text-red-500">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-2">
                   <Label
                     htmlFor="email"
@@ -56,6 +87,8 @@ const LoginPage: ActivityComponentType = () => {
                       placeholder="m@example.com"
                       required
                       className="pl-10"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
                     />
                     <MailIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
                   </div>
@@ -73,6 +106,8 @@ const LoginPage: ActivityComponentType = () => {
                       type={showPassword ? 'text' : 'password'}
                       required
                       className="pl-10"
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
                     />
                     <LockIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
                     <button
@@ -99,16 +134,20 @@ const LoginPage: ActivityComponentType = () => {
                     </label>
                   </div>
                   <div className="text-sm">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="font-medium text-blue-600 hover:text-blue-500"
                     >
                       비밀번호를 잊으셨나요?
-                    </a>
+                    </Link>
                   </div>
                 </div>
-                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
-                  로그인
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                  disabled={isLoading}
+                >
+                  {isLoading ? '로그인 중...' : '로그인'}
                 </Button>
               </form>
             </CardContent>

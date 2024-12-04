@@ -13,7 +13,11 @@
       "@/*": ["./src/*"],
       "@lib/*": ["src/lib/*"],
       "@components/*": ["src/components/*"],
-      "@ui/*": ["src/components/ui/*"]
+      "@ui/*": ["src/components/ui/*"],
+      "@util/*": ["./src/utils/*"],
+      "@mock/*": ["./src/mock/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@assets/*": ["./src/assets"]
     },
 
     "moduleResolution": "bundler",

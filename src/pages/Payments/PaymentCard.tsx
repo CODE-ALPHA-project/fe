@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { cn } from '@lib/utils';
 import { Button } from '@ui/button';
 import {
@@ -9,7 +11,6 @@ import {
   CardTitle,
 } from '@ui/card';
 import { PaymentPlanProps } from './types/types';
-import { useState } from 'react';
 
 const PaymentCard = ({
   className,
@@ -78,12 +79,12 @@ const PaymentCard = ({
             'h-12 w-full items-center md:h-14',
             isPremium
               ? 'bg-sky-500 hover:bg-sky-600'
-              : 'bg-sky-950 hover:bg-sky-800',
+              : 'bg-sky-900 hover:bg-sky-800',
           )}
         >
-          <span className="font-sans text-xl font-normal md:text-2xl">
+          <span className="font-pretendard text-xl font-medium md:text-2xl">
             {currentPlan === type
-              ? '현재 사용중인 요금제입니다.'
+              ? '현재 사용중인 요금제'
               : `${price} USD/month`}
           </span>
         </Button>

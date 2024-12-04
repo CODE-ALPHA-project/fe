@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { getWebPPath } from '../../../../utils/getWebp';
+import Autoplay from 'embla-carousel-autoplay';
+
+import { getWebPPath } from '@/utils/getWebp';
 import {
   Carousel,
   CarouselContent,
@@ -7,7 +9,6 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { ImageSliderProps } from '@/pages/Home/types/type';
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
@@ -20,18 +21,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
     >
       <CarouselContent>
         {slides.map(slide => (
-          <CarouselItem key={slide.key}>
+          <CarouselItem key={slide.key} className="h-full w-full">
             <div className="h-full w-full">
-              <picture className="h-full w-full">
-                <source srcSet={getWebPPath(slide.image)} type="image/webp" />
-                <source srcSet={slide.image} type="image/png" />
-                <img
-                  src={slide.image}
-                  alt={`Slide ${slide.key}`}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </picture>
+              <source srcSet={getWebPPath(slide.image)} type="image/webp" />
+              <img
+                src={slide.image}
+                alt={`Slide ${slide.key}`}
+                className="aspect-auto max-h-max"
+                loading="lazy"
+              />
             </div>
           </CarouselItem>
         ))}

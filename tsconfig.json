@@ -1,30 +1,3 @@
-// {
-//   "compilerOptions": {
-//     "target": "ES2020",
-//     "useDefineForClassFields": true,
-//     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-//     "module": "ESNext",
-//     "skipLibCheck": true,
-//     "moduleResolution": "bundler",
-//     "allowImportingTsExtensions": true,
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "noEmit": true,
-//     "jsx": "react-jsx",
-//     "strict": true,
-//     "baseUrl": ".",
-//     "paths": {
-//       "@/*": ["./src/*"],
-//       "@components/*": ["./src/components/*"],
-//       "@ui/*": ["./src/components/ui/*"],
-//       "@lib/*": ["./src/lib/*"]
-//     }
-//   },
-//   "references": [
-//     { "path": "./tsconfig.node.json" },
-//     { "path": "./tsconfig.app.json" }
-//   ]
-// }
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -44,7 +17,11 @@
       "@/*": ["./src/*"],
       "@lib/*": ["./src/lib/*"],
       "@components/*": ["./src/components/*"],
-      "@ui/*": ["./src/components/ui/*"]
+      "@ui/*": ["./src/components/ui/*"],
+      "@util/*": ["./src/utils/*"],
+      "@mock/*": ["./src/mock/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@assets/*": ["./src/assets"]
     },
 
     /* Build */

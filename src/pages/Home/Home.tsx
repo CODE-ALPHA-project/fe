@@ -1,9 +1,10 @@
+import { ActivityComponentType } from '@stackflow/react';
+import { AppScreen } from '@stackflow/plugin-basic-ui';
+
 import Banner from './components/features/Banner';
 import QnASection from './components/features/QnASection';
 import MenuList from './components/features/MenuList';
 import RecommendExpert from './components/features/RecommendExpert';
-import { ActivityComponentType } from '@stackflow/react';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
 import BottomTab from '@/components/display/BottomTab';
 
 const Home: ActivityComponentType = () => {

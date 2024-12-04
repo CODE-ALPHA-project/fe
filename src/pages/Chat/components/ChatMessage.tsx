@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { cn } from '@lib/utils';
 import ReactMarkdown from 'react-markdown';
-import useTypingEffect from '../../../hooks/useTypingEffect';
+import useTypingEffect from '@/hooks/useTypingEffect';
 import { MessageRequestProps } from '../types/type';
 import { Card } from '@ui/card';
 

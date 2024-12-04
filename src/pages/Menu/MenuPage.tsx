@@ -1,6 +1,7 @@
-import BottomTab from '@/components/display/BottomTab';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
+
+import BottomTab from '@/components/display/BottomTab';
 
 const MenuPage: ActivityComponentType = () => {
   return (

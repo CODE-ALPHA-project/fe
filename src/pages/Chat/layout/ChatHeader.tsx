@@ -1,14 +1,15 @@
-import React from "react";
-import { Menu, Home } from "lucide-react";
-import { Button } from "@ui/button";
-import { cn } from "@lib/utils";
+import React from 'react';
+import { useFlow } from '@/stackflow';
+
+import { Menu, Home } from 'lucide-react';
+import { Button } from '@ui/button';
+import { cn } from '@lib/utils';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@ui/tooltip";
-import { useFlow } from "@/stackflow";
+} from '@ui/tooltip';
 
 interface ChatHeaderProps {
   toggleSidebar: () => void;
@@ -24,10 +25,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   return (
     <header
       className={cn(
-        "h-14 px-4",
-        "flex items-center justify-between",
-        "border-b bg-background/95",
-        "backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        'h-14 px-4',
+        'flex items-center justify-between',
+        'border-b bg-background/95',
+        'backdrop-blur supports-[backdrop-filter]:bg-background/60',
       )}
     >
       {/* Left Section */}
@@ -36,19 +37,19 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           variant="ghost"
           size="icon"
           onClick={toggleSidebar}
-          className={cn("h-9 w-9", "hover:bg-secondary/80", "rounded-lg")}
+          className={cn('h-9 w-9', 'hover:bg-secondary/80', 'rounded-lg')}
         >
           <Menu className="h-5 w-5" />
         </Button>
 
         <h1
           className={cn(
-            "text-lg font-eland",
-            "bg-gradient-to-r from-foreground to-foreground/70",
-            "bg-clip-text text-transparent",
-            "cursor-pointer",
+            'font-eland text-lg',
+            'bg-gradient-to-r from-foreground to-foreground/70',
+            'bg-clip-text text-transparent',
+            'cursor-pointer',
           )}
-          onClick={() => push("Home", {}, { animate: true })}
+          onClick={() => push('Home', {}, { animate: true })}
         >
           SolveUs
         </h1>
@@ -59,12 +60,12 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             <TooltipTrigger asChild>
               <div
                 className={cn(
-                  "px-3 py-1.5 rounded-lg",
-                  "flex items-center gap-2",
-                  "text-sm font-medium",
-                  "bg-secondary/20",
-                  isConnected ? "text-green-600" : "text-red-600",
-                  "transition-colors duration-200",
+                  'rounded-lg px-3 py-1.5',
+                  'flex items-center gap-2',
+                  'text-sm font-medium',
+                  'bg-secondary/20',
+                  isConnected ? 'text-green-600' : 'text-red-600',
+                  'transition-colors duration-200',
                 )}
               >
                 {isConnected ? (
@@ -82,8 +83,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             </TooltipTrigger>
             <TooltipContent>
               {isConnected
-                ? "서버와 연결되어 있습니다"
-                : "서버와의 연결이 끊어졌습니다"}
+                ? '서버와 연결되어 있습니다'
+                : '서버와의 연결이 끊어졌습니다'}
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -91,8 +92,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         <Button
           variant="ghost"
           size="lg"
-          onClick={() => push("Home", {}, { animate: true })}
-          className={cn("h-9 w-9", "hover:bg-secondary/80", "rounded-lg")}
+          onClick={() => push('Home', {}, { animate: true })}
+          className={cn('h-9 w-9', 'hover:bg-secondary/80', 'rounded-lg')}
         >
           <Home className="h-5 w-5" size={24} />
         </Button>

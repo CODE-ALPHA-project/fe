@@ -1,9 +1,9 @@
 import '@stackflow/plugin-basic-ui/index.css';
-
 import { stackflow } from '@stackflow/react';
 import { basicRendererPlugin } from '@stackflow/plugin-renderer-basic';
 import { basicUIPlugin } from '@stackflow/plugin-basic-ui';
 import { historySyncPlugin } from '@stackflow/plugin-history-sync';
+
 import Home from '@/pages/Home/Home';
 import LoginPage from '@/pages/Auth/SignIn/SignInPage';
 import SignupPage from '@/pages/Auth/SignUp/SignUpPage';
@@ -15,6 +15,7 @@ import ChatPage from '@/pages/Chat/ChatPage';
 import MenuPage from '@/pages/Menu/MenuPage';
 import PostPage from '@/pages/Post/PostPage';
 import WritePage from '@/pages/Write/WritePage';
+import MyPage from '@/pages/My/MyPage';
 
 export const { Stack, useFlow } = stackflow({
   transitionDuration: 350,
@@ -36,6 +37,7 @@ export const { Stack, useFlow } = stackflow({
         MenuPage: '/menu',
         PostPage: '/posts',
         WritePage: '/write',
+        MyPage: '/my',
       },
       fallbackActivity: () => 'Home',
     }),
@@ -52,5 +54,6 @@ export const { Stack, useFlow } = stackflow({
     MenuPage,
     PostPage,
     WritePage,
+    MyPage,
   },
 });

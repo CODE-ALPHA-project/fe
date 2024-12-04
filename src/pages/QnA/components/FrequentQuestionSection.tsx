@@ -7,7 +7,11 @@ const FrequentQuestionSection = () => {
       <span className="text-xl font-bold">자주 묻는 질문</span>
       <div className="w-full">
         {questions.map(question => (
-          <FrequentQuestionItem key={question} title={question} />
+          <FrequentQuestionItem
+            key={question.title}
+            title={question.title}
+            content={question.content}
+          />
         ))}
       </div>
     </section>
