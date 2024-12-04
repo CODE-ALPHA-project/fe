@@ -23,7 +23,7 @@ const QnASection: React.FC = () => {
               질문답변으로 간단한 상담받기
             </h2>
             <p className="font-eland text-muted-foreground">
-              간단한 노사문제는 질문을 통해 해결하세요!
+              노무사를 찾기 애매할 경우 질문해보세요!
             </p>
           </div>
           <div className="flex gap-3">

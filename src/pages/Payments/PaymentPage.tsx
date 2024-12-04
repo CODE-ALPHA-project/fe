@@ -7,7 +7,7 @@ import { basicPlan, premiumPlan } from '@/pages/Payments/plan';
 
 const PaymentPage: ActivityComponentType = () => {
   return (
-    <AppScreen appBar={{ title: 'Payment', height: '55px' }}>
+    <AppScreen appBar={{ title: '비용 안내', height: '55px' }}>
       <div className="fixed inset-0 overflow-auto">
         <div className="container mx-auto min-h-[calc(100vh-100px)] pb-20">
           <div className="flex flex-col items-center justify-center px-4 py-3 md:py-20">

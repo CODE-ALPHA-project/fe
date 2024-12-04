@@ -10,7 +10,8 @@ export type ActivityName =
   | 'ExpertPage'
   | 'QnAPage'
   | 'PaymentPage'
-  | 'MenuPage';
+  | 'MenuPage'
+  | 'MyPage';
 
 export interface TabItem {
   name: string;

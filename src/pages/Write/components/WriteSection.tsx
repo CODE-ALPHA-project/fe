@@ -18,7 +18,7 @@ const WriteSection = () => {
   return (
     <section className="py-4">
       <Textarea
-        className="h-[400px]"
+        className="h-[350px]"
         value={content}
         onChange={contentChangeHandler}
       />

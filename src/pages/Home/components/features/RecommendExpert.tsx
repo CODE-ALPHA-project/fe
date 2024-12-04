@@ -9,7 +9,7 @@ const RecommendExpert = () => {
     <div className="mx-4 py-8 sm:mx-8 lg:mx-12">
       <div className="mb-6 flex items-center gap-2 px-2">
         <h2 className="font-eland text-2xl tracking-tight">
-          오늘의 추천노무사
+          응답이 빠른 노무사
         </h2>
       </div>
 

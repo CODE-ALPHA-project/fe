@@ -15,6 +15,7 @@ import ChatPage from '@/pages/Chat/ChatPage';
 import MenuPage from '@/pages/Menu/MenuPage';
 import PostPage from '@/pages/Post/PostPage';
 import WritePage from '@/pages/Write/WritePage';
+import MyPage from '@/pages/My/MyPage';
 
 export const { Stack, useFlow } = stackflow({
   transitionDuration: 350,
@@ -36,6 +37,7 @@ export const { Stack, useFlow } = stackflow({
         MenuPage: '/menu',
         PostPage: '/posts',
         WritePage: '/write',
+        MyPage: '/my',
       },
       fallbackActivity: () => 'Home',
     }),
@@ -52,5 +54,6 @@ export const { Stack, useFlow } = stackflow({
     MenuPage,
     PostPage,
     WritePage,
+    MyPage,
   },
 });

@@ -4,7 +4,7 @@ import { Card, CardContent } from '@ui/card';
 import { Badge } from '@ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar';
 import { Clock } from 'lucide-react';
-import { cn } from '@lib/utils';
+// import { cn } from '@lib/utils';
 import { ExpertProps } from '@/pages/Home/types/type';
 
 export const ExpertCard: React.FC<ExpertProps> = ({
@@ -55,20 +55,20 @@ export const ExpertCard: React.FC<ExpertProps> = ({
   );
 };
 
-// 카드 컨테이너 컴포넌트 (필요한 경우 사용)
-export const ExpertCardsContainer: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => {
-  return (
-    <div
-      className={cn(
-        'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3',
-        'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8',
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+// // 카드 컨테이너 컴포넌트 (필요한 경우 사용)
+// export const ExpertCardsContainer: React.FC<{
+//   children: React.ReactNode;
+//   className?: string;
+// }> = ({ children, className }) => {
+//   return (
+//     <div
+//       className={cn(
+//         'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3',
+//         'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8',
+//         className,
+//       )}
+//     >
+//       {children}
+//     </div>
+//   );
+// };
