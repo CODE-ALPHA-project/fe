@@ -16,7 +16,7 @@ const ExpertPage: ActivityComponentType = () => {
   return (
     <AppScreen appBar={{ title: '노무사목록', height: '55px' }}>
       <div className="fixed inset-0 overflow-auto">
-        <div className="flex w-full flex-col px-3 py-3">
+        <div className="flex w-full flex-col px-3 py-3 pb-20">
           <SelectFilter value={selectedFilter} onChange={setSelectedFilter} />
           <ExpertSection experts={filteredExperts} />
         </div>
